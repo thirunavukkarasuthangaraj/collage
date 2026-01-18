@@ -238,6 +238,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
         }
         .placeholder-img {
             width: 100%;
@@ -723,8 +724,9 @@
             .header-top-inner { flex-direction: column; gap: 8px; text-align: center; }
             .hero { padding-top: 150px; }
             .hero-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 32px; }
+            .hero h1 { font-size: 32px; line-height: 1.2; }
             .hero-slider .slide { height: 280px; }
+            .hero-slider .slide img { object-position: center top; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .hero-stat { padding: 15px 10px; }
             .hero-stat h3 { font-size: 24px; }
@@ -732,6 +734,24 @@
             .programs-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             .cta h2 { font-size: 32px; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .whatsapp-float svg { width: 26px; height: 26px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding-top: 140px; padding-bottom: 40px; }
+            .hero h1 { font-size: 26px; line-height: 1.3; }
+            .hero p { font-size: 14px; }
+            .hero-slider .slide { height: 220px; }
+            .hero-slider { border-radius: 12px; }
+            .hero-badge { font-size: 12px; padding: 8px 16px; }
+            .hero-buttons { flex-direction: column; gap: 10px; }
+            .hero-buttons .btn { width: 100%; text-align: center; }
+            .hero-stat h3 { font-size: 20px; }
+            .hero-stat p { font-size: 11px; }
+            .whatsapp-float { bottom: 15px; right: 15px; width: 45px; height: 45px; }
+            .whatsapp-float svg { width: 24px; height: 24px; }
+            .section-header h2 { font-size: 24px; }
+            .about-list li { font-size: 14px; padding: 8px 0; }
         }
 
         /* Floating WhatsApp Button */
