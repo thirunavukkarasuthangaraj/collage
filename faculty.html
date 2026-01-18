@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet our 20+ experienced faculty at Vasanth Nursery And Primary School - Dedicated teachers committed to primary education.">
+    <title>Our Faculty - Vasanth Nursery And Primary School, Tirupattur</title>
+    <link rel="icon" href="logo/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: #2d3748; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { position: fixed; top: 0; left: 0; right: 0; background: white; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+        .header-top { background: #1a365d; color: white; padding: 8px 0; font-size: 13px; }
+        .header-top-inner { display: flex; justify-content: space-between; align-items: center; }
+        .header-top span { display: flex; align-items: center; gap: 6px; }
+        .lang-switch { display: flex; gap: 5px; }
+        .lang-switch button { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 3px; cursor: pointer; font-size: 12px; transition: all 0.3s; }
+        .lang-switch button.active, .lang-switch button:hover { background: white; color: #1a365d; }
+        .header-main { padding: 15px 0; }
+        .header-main-inner { display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo img { height: 65px; width: auto; }
+        .logo-text h1 { font-size: 18px; font-weight: 700; color: #1a365d; line-height: 1.2; }
+        .logo-text span { font-size: 12px; color: #718096; }
+        nav { display: flex; align-items: center; gap: 5px; }
+        nav a { padding: 10px 16px; font-size: 14px; font-weight: 500; color: #4a5568; border-radius: 6px; transition: all 0.3s; }
+        nav a:hover, nav a.active { color: #2b6cb0; background: #ebf8ff; }
+        .btn-apply { background: linear-gradient(135deg, #2b6cb0, #1a365d); color: white !important; padding: 12px 24px !important; border-radius: 8px !important; font-weight: 600 !important; }
+        .btn-apply:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(43,108,176,0.4); }
+        .mobile-menu { display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #1a365d; }
+
+        /* Page Header */
+        .page-header { padding: 160px 0 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center; color: white; }
+        .page-header h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
+        .breadcrumb { display: flex; justify-content: center; gap: 10px; font-size: 15px; opacity: 0.9; }
+        .breadcrumb a { color: white; }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        .bg-light { background: #f7fafc; }
+        .bg-white { background: white; }
+        .section-header { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+        .section-label { display: inline-block; background: #ebf8ff; color: #2b6cb0; padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .section-header h2 { font-size: 38px; font-weight: 700; color: #1a365d; margin-bottom: 15px; }
+        .section-header p { color: #718096; font-size: 17px; }
+
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .stat-card { background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .stat-card h3 { font-size: 40px; font-weight: 800; color: #667eea; margin-bottom: 5px; }
+        .stat-card p { color: #718096; font-size: 14px; }
+
+        /* Faculty Cards */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .faculty-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: all 0.4s; border: 1px solid #e2e8f0; }
+        .faculty-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+        .faculty-card img { width: 100%; height: 220px; object-fit: cover; }
+        .faculty-card .info { padding: 25px; text-align: center; }
+        .faculty-card h3 { font-size: 18px; color: #1a365d; margin-bottom: 5px; }
+        .faculty-card .role { color: #667eea; font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+        .faculty-card .subject { color: #718096; font-size: 13px; }
+
+        /* Special Teacher Cards */
+        .special-card { display: flex; gap: 20px; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); transition: all 0.4s; border: 1px solid #e2e8f0; }
+        .special-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-color: #667eea; }
+        .special-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+        .special-card h3 { font-size: 18px; color: #1a365d; margin-bottom: 8px; }
+        .special-card p { color: #718096; font-size: 14px; line-height: 1.6; }
+
+        /* CTA */
+        .cta { padding: 80px 0; background: linear-gradient(135deg, #f6ad55, #ed8936); text-align: center; color: white; }
+        .cta h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+        .cta p { font-size: 18px; opacity: 0.95; margin-bottom: 30px; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-white { background: white; color: #c05621; }
+        .btn-white:hover { background: #1a365d; color: white; }
+        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); }
+        .btn-outline:hover { background: white; color: #ed8936; }
+
+        /* Footer */
+        footer { background: #1a202c; color: white; padding: 70px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 40px; }
+        .footer-about img { height: 60px; margin-bottom: 20px; }
+        .footer-about p { color: #a0aec0; font-size: 15px; line-height: 1.8; }
+        footer h4 { font-size: 18px; margin-bottom: 20px; font-weight: 600; }
+        footer ul { list-style: none; }
+        footer ul li { margin-bottom: 12px; }
+        footer ul li a { color: #a0aec0; font-size: 15px; transition: all 0.3s; }
+        footer ul li a:hover { color: #667eea; padding-left: 5px; }
+        .footer-contact li { display: flex; gap: 12px; color: #a0aec0; font-size: 15px; }
+        .footer-bottom { padding-top: 25px; border-top: 1px solid #2d3748; text-align: center; color: #718096; font-size: 14px; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .mobile-menu { display: block; }
+            .header-top-inner { flex-direction: column; gap: 8px; text-align: center; }
+            .page-header { padding: 140px 0 60px; }
+            .page-header h1 { font-size: 36px; }
+            .stats-grid, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .cta h2 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-inner">
+                <span>📞 +91 98765 43210 | ✉️ info@vasanthschool.edu.in</span>
+                <div class="lang-switch">
+                    <button class="active" onclick="switchLanguage('en')">English</button>
+                    <button onclick="switchLanguage('ta')">தமிழ்</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-main-inner">
+                <a href="index.html" class="logo">
+                    <img src="logo/logo.png" alt="Vasanth Nursery And Primary School">
+                    <div class="logo-text">
+                        <h1><span class="lang-en">Vasanth Nursery And Primary School</span><span class="lang-ta" style="display:none;">வசந்த் நர்சரி மற்றும் ஆரம்பப் பள்ளி</span></h1>
+                        <span><span class="lang-en">Tirupattur, Tamil Nadu</span><span class="lang-ta" style="display:none;">திருப்பத்தூர், தமிழ்நாடு</span></span>
+                    </div>
+                </a>
+                <nav>
+                    <a href="index.html"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
+                    <a href="about.html"><span class="lang-en">About</span><span class="lang-ta" style="display:none;">எங்களைப் பற்றி</span></a>
+                    <a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a>
+                    <a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a>
+                    <a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதிகள்</span></a>
+                    <a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படத்தொகுப்பு</span></a>
+                    <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
+                    <a href="admissions.html" class="btn-apply"><span class="lang-en">Register</span><span class="lang-ta" style="display:none;">பதிவு செய்க</span></a>
+                </nav>
+                <button class="mobile-menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><span class="lang-en">Our Faculty</span><span class="lang-ta" style="display:none;">எங்கள் ஆசிரியர்கள்</span></h1>
+            <div class="breadcrumb">
+                <a href="index.html"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
+                <span>/</span>
+                <span><span class="lang-en">Faculty</span><span class="lang-ta" style="display:none;">ஆசிரியர்கள்</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Our Team</span><span class="lang-ta" style="display:none;">எங்கள் குழு</span></span>
+                <h2><span class="lang-en">Meet Our Dedicated Teachers</span><span class="lang-ta" style="display:none;">எங்கள் ஆசிரியர்களை சந்தியுங்கள்</span></h2>
+                <p><span class="lang-en">20+ experienced educators committed to nurturing young minds and building strong foundations.</span><span class="lang-ta" style="display:none;">20+ அனுபவமுள்ள கல்வியாளர்கள் இளம் மனங்களை வளர்ப்பதிலும் வலுவான அடித்தளங்களை உருவாக்குவதிலும் அர்ப்பணிப்புடன் உள்ளனர்.</span></p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>20+</h3>
+                    <p><span class="lang-en">Qualified Teachers</span><span class="lang-ta" style="display:none;">தகுதி பெற்ற ஆசிரியர்கள்</span></p>
+                </div>
+                <div class="stat-card">
+                    <h3>400+</h3>
+                    <p><span class="lang-en">Students</span><span class="lang-ta" style="display:none;">மாணவர்கள்</span></p>
+                </div>
+                <div class="stat-card">
+                    <h3>1:20</h3>
+                    <p><span class="lang-en">Teacher-Student Ratio</span><span class="lang-ta" style="display:none;">ஆசிரியர்-மாணவர் விகிதம்</span></p>
+                </div>
+                <div class="stat-card">
+                    <h3>1-5</h3>
+                    <p><span class="lang-en">Standards</span><span class="lang-ta" style="display:none;">வகுப்புகள்</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Leadership</span><span class="lang-ta" style="display:none;">தலைமை</span></span>
+                <h2><span class="lang-en">School Administration</span><span class="lang-ta" style="display:none;">பள்ளி நிர்வாகம்</span></h2>
+            </div>
+            <div class="grid-3">
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=350&fit=crop" alt="Principal">
+                    <div class="info">
+                        <h3><span class="lang-en">Principal</span><span class="lang-ta" style="display:none;">தலைமை ஆசிரியர்</span></h3>
+                        <p class="role"><span class="lang-en">Head of School</span><span class="lang-ta" style="display:none;">பள்ளித் தலைவர்</span></p>
+                        <p class="subject"><span class="lang-en">M.Ed, B.Ed</span><span class="lang-ta" style="display:none;">M.Ed, B.Ed</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=350&fit=crop" alt="Vice Principal">
+                    <div class="info">
+                        <h3><span class="lang-en">Vice Principal</span><span class="lang-ta" style="display:none;">துணைத் தலைமை ஆசிரியர்</span></h3>
+                        <p class="role"><span class="lang-en">Academic Head</span><span class="lang-ta" style="display:none;">கல்வித் தலைவர்</span></p>
+                        <p class="subject"><span class="lang-en">M.A, B.Ed</span><span class="lang-ta" style="display:none;">M.A, B.Ed</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=350&fit=crop" alt="Coordinator">
+                    <div class="info">
+                        <h3><span class="lang-en">Academic Coordinator</span><span class="lang-ta" style="display:none;">கல்வி ஒருங்கிணைப்பாளர்</span></h3>
+                        <p class="role"><span class="lang-en">Primary Section</span><span class="lang-ta" style="display:none;">ஆரம்பப் பிரிவு</span></p>
+                        <p class="subject"><span class="lang-en">M.Sc, B.Ed</span><span class="lang-ta" style="display:none;">M.Sc, B.Ed</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Primary Teachers -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Class 1 - 5</span><span class="lang-ta" style="display:none;">வகுப்பு 1 - 5</span></span>
+                <h2><span class="lang-en">Primary School Teachers</span><span class="lang-ta" style="display:none;">ஆரம்பப் பள்ளி ஆசிரியர்கள்</span></h2>
+            </div>
+            <div class="grid-4">
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Mrs. Priya S.</h3>
+                        <p class="role"><span class="lang-en">Class 1 Teacher</span><span class="lang-ta" style="display:none;">வகுப்பு 1 ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">English & Tamil</span><span class="lang-ta" style="display:none;">ஆங்கிலம் & தமிழ்</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Mrs. Kavitha R.</h3>
+                        <p class="role"><span class="lang-en">Class 2 Teacher</span><span class="lang-ta" style="display:none;">வகுப்பு 2 ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">English & EVS</span><span class="lang-ta" style="display:none;">ஆங்கிலம் & சுற்றுச்சூழல்</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Ms. Deepa M.</h3>
+                        <p class="role"><span class="lang-en">Class 3 Teacher</span><span class="lang-ta" style="display:none;">வகுப்பு 3 ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">Mathematics</span><span class="lang-ta" style="display:none;">கணிதம்</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Mrs. Anitha K.</h3>
+                        <p class="role"><span class="lang-en">Class 4 Teacher</span><span class="lang-ta" style="display:none;">வகுப்பு 4 ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">Science & Social</span><span class="lang-ta" style="display:none;">அறிவியல் & சமூகவியல்</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Mrs. Sudha V.</h3>
+                        <p class="role"><span class="lang-en">Class 5 Teacher</span><span class="lang-ta" style="display:none;">வகுப்பு 5 ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">English & Science</span><span class="lang-ta" style="display:none;">ஆங்கிலம் & அறிவியல்</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Mr. Ramesh S.</h3>
+                        <p class="role"><span class="lang-en">Mathematics Teacher</span><span class="lang-ta" style="display:none;">கணித ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">Class 3-5</span><span class="lang-ta" style="display:none;">வகுப்பு 3-5</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Mr. Venkat P.</h3>
+                        <p class="role"><span class="lang-en">Tamil Teacher</span><span class="lang-ta" style="display:none;">தமிழ் ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">Class 1-5</span><span class="lang-ta" style="display:none;">வகுப்பு 1-5</span></p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=350&fit=crop" alt="Teacher">
+                    <div class="info">
+                        <h3>Mr. Karthik R.</h3>
+                        <p class="role"><span class="lang-en">Computer Teacher</span><span class="lang-ta" style="display:none;">கணினி ஆசிரியர்</span></p>
+                        <p class="subject"><span class="lang-en">Class 3-5</span><span class="lang-ta" style="display:none;">வகுப்பு 3-5</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Teachers -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Co-Curricular</span><span class="lang-ta" style="display:none;">இணை பாடத்திட்டம்</span></span>
+                <h2><span class="lang-en">Special Teachers</span><span class="lang-ta" style="display:none;">சிறப்பு ஆசிரியர்கள்</span></h2>
+            </div>
+            <div class="grid-4">
+                <div class="special-card">
+                    <div class="special-icon">🎨</div>
+                    <div>
+                        <h3><span class="lang-en">Art Teacher</span><span class="lang-ta" style="display:none;">ஓவிய ஆசிரியர்</span></h3>
+                        <p><span class="lang-en">Drawing, Painting & Craft for all classes</span><span class="lang-ta" style="display:none;">அனைத்து வகுப்புகளுக்கும் ஓவியம், வண்ணம் தீட்டுதல் & கைவினை</span></p>
+                    </div>
+                </div>
+                <div class="special-card">
+                    <div class="special-icon">🎵</div>
+                    <div>
+                        <h3><span class="lang-en">Music Teacher</span><span class="lang-ta" style="display:none;">இசை ஆசிரியர்</span></h3>
+                        <p><span class="lang-en">Songs, Rhymes & Cultural activities</span><span class="lang-ta" style="display:none;">பாடல்கள், ரைம்கள் & கலாச்சார நடவடிக்கைகள்</span></p>
+                    </div>
+                </div>
+                <div class="special-card">
+                    <div class="special-icon">🏃</div>
+                    <div>
+                        <h3><span class="lang-en">Physical Education</span><span class="lang-ta" style="display:none;">உடற்கல்வி</span></h3>
+                        <p><span class="lang-en">Sports, Games & Physical activities</span><span class="lang-ta" style="display:none;">விளையாட்டு, ஆட்டங்கள் & உடல் நடவடிக்கைகள்</span></p>
+                    </div>
+                </div>
+                <div class="special-card">
+                    <div class="special-icon">💻</div>
+                    <div>
+                        <h3><span class="lang-en">Computer Teacher</span><span class="lang-ta" style="display:none;">கணினி ஆசிரியர்</span></h3>
+                        <p><span class="lang-en">Basic computer skills for Class 3-5</span><span class="lang-ta" style="display:none;">வகுப்பு 3-5 க்கான அடிப்படை கணினி திறன்கள்</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2><span class="lang-en">Want to Know More?</span><span class="lang-ta" style="display:none;">மேலும் அறிய விரும்புகிறீர்களா?</span></h2>
+            <p><span class="lang-en">Visit our campus and meet our dedicated teaching staff.</span><span class="lang-ta" style="display:none;">எங்கள் வளாகத்தை பார்வையிட்டு எங்கள் அர்ப்பணிப்பான ஆசிரியர்களை சந்தியுங்கள்.</span></p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-white"><span class="lang-en">Contact Us</span><span class="lang-ta" style="display:none;">எங்களை தொடர்பு கொள்ளுங்கள்</span></a>
+                <a href="admissions.html" class="btn btn-outline"><span class="lang-en">Apply Now</span><span class="lang-ta" style="display:none;">இப்போது விண்ணப்பிக்கவும்</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="logo/logo.png" alt="Vasanth Nursery And Primary School">
+                    <p><span class="lang-en">Providing quality primary education from 1st to 5th standard with 400+ students, 20+ teachers, digital classrooms and transport facility.</span><span class="lang-ta" style="display:none;">400+ மாணவர்கள், 20+ ஆசிரியர்கள், டிஜிட்டல் வகுப்பறைகள் மற்றும் போக்குவரத்து வசதியுடன் 1 முதல் 5 வகுப்பு வரை தரமான ஆரம்பக் கல்வியை வழங்குகிறோம்.</span></p>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Quick Links</span><span class="lang-ta" style="display:none;">விரைவு இணைப்புகள்</span></h4>
+                    <ul>
+                        <li><a href="about.html"><span class="lang-en">About Us</span><span class="lang-ta" style="display:none;">எங்களைப் பற்றி</span></a></li>
+                        <li><a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a></li>
+                        <li><a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a></li>
+                        <li><a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதிகள்</span></a></li>
+                        <li><a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படத்தொகுப்பு</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></h4>
+                    <ul>
+                        <li><a href="academics.html"><span class="lang-en">Class 1 - 2</span><span class="lang-ta" style="display:none;">வகுப்பு 1 - 2</span></a></li>
+                        <li><a href="academics.html"><span class="lang-en">Class 3 - 4</span><span class="lang-ta" style="display:none;">வகுப்பு 3 - 4</span></a></li>
+                        <li><a href="academics.html"><span class="lang-en">Class 5</span><span class="lang-ta" style="display:none;">வகுப்பு 5</span></a></li>
+                        <li><a href="faculty.html"><span class="lang-en">Our Faculty</span><span class="lang-ta" style="display:none;">எங்கள் ஆசிரியர்கள்</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Contact Us</span><span class="lang-ta" style="display:none;">தொடர்பு கொள்ளுங்கள்</span></h4>
+                    <ul class="footer-contact">
+                        <li><span>📍</span> <span class="lang-en">Tirupattur, Tamil Nadu</span><span class="lang-ta" style="display:none;">திருப்பத்தூர், தமிழ்நாடு</span></li>
+                        <li><span>📞</span> +91 98765 43210</li>
+                        <li><span>✉️</span> info@vasanthschool.edu.in</li>
+                        <li><span>🕐</span> <span class="lang-en">Mon - Sat: 8AM - 4PM</span><span class="lang-ta" style="display:none;">திங்கள் - சனி: 8AM - 4PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><span class="lang-en">© 2026 Vasanth Nursery And Primary School, Tirupattur. All Rights Reserved.</span><span class="lang-ta" style="display:none;">© 2026 வசந்த் நர்சரி மற்றும் ஆரம்பப் பள்ளி, திருப்பத்தூர். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            const enElements = document.querySelectorAll('.lang-en');
+            const taElements = document.querySelectorAll('.lang-ta');
+            const buttons = document.querySelectorAll('.lang-switch button');
+
+            if (lang === 'ta') {
+                enElements.forEach(el => el.style.display = 'none');
+                taElements.forEach(el => el.style.display = 'inline');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+                localStorage.setItem('preferredLanguage', 'ta');
+            } else {
+                enElements.forEach(el => el.style.display = 'inline');
+                taElements.forEach(el => el.style.display = 'none');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+
+        // Check for saved language preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang === 'ta') {
+                switchLanguage('ta');
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

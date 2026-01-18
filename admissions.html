@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - Vasanth Nursery And Primary School</title>
+    <link rel="icon" href="logo/logo.png" type="image/png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { position: fixed; top: 0; left: 0; right: 0; background: white; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-top { background: #1a365d; color: white; padding: 8px 0; font-size: 13px; }
+        .header-top-inner { display: flex; justify-content: space-between; align-items: center; }
+        .lang-switch { display: flex; gap: 5px; }
+        .lang-switch button { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 3px; cursor: pointer; font-size: 12px; }
+        .lang-switch button.active, .lang-switch button:hover { background: white; color: #1a365d; }
+        .header-main { padding: 12px 0; }
+        .header-main-inner { display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 55px; }
+        .logo-text h1 { font-size: 17px; font-weight: bold; color: #1a365d; }
+        .logo-text span { font-size: 12px; color: #666; }
+        nav { display: flex; align-items: center; gap: 5px; }
+        nav a { padding: 8px 14px; font-size: 14px; color: #444; border-radius: 5px; }
+        nav a:hover, nav a.active { color: #2b6cb0; background: #ebf8ff; }
+        .btn-register { background: #2b6cb0; color: white !important; padding: 10px 20px !important; border-radius: 5px; }
+        .btn-register:hover { background: #1a365d; }
+
+        /* Page Header */
+        .page-header { padding: 120px 0 40px; background: linear-gradient(135deg, #667eea, #764ba2); text-align: center; color: white; }
+        .page-header h1 { font-size: 32px; margin-bottom: 8px; }
+        .page-header p { opacity: 0.9; font-size: 15px; }
+
+        /* Form Section */
+        .form-section { padding: 30px 0; background: #f7fafc; }
+        .form-container { max-width: 550px; margin: 0 auto; }
+        .form-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .form-box h2 { color: #1a365d; margin-bottom: 5px; font-size: 22px; }
+        .form-box > p { color: #666; font-size: 13px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #444; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; font-size: 14px; border: 1px solid #ddd; border-radius: 6px;
+        }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #667eea; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-submit:hover { opacity: 0.9; }
+        .contact-link { text-align: center; margin-top: 25px; font-size: 14px; color: #666; }
+        .contact-link a { color: #25D366; font-weight: bold; }
+
+        /* Footer */
+        footer { background: #1a365d; color: white; padding: 25px 0; text-align: center; }
+        footer p { font-size: 14px; opacity: 0.9; }
+
+        /* WhatsApp Float */
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 999; }
+        .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+        /* Language Toggle */
+        .lang-ta { display: none; }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .header-top-inner { flex-direction: column; gap: 8px; text-align: center; }
+            .form-row { grid-template-columns: 1fr; }
+            .page-header { padding: 120px 0 50px; }
+            .page-header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-inner">
+                <span>📞 +91 98765 43210 | ✉️ info@vasanthschool.edu.in</span>
+                <div class="lang-switch">
+                    <button class="active" onclick="switchLang('en')">English</button>
+                    <button onclick="switchLang('ta')">தமிழ்</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-main-inner">
+                <a href="index.html" class="logo">
+                    <img src="logo/logo.png" alt="Logo">
+                    <div class="logo-text">
+                        <h1><span class="lang-en">Vasanth Nursery And Primary School</span><span class="lang-ta" style="display:none;">வசந்த் நர்சரி மற்றும் தொடக்கப்பள்ளி</span></h1>
+                        <span><span class="lang-en">Tirupattur, Tamil Nadu</span><span class="lang-ta" style="display:none;">திருப்பத்தூர், தமிழ்நாடு</span></span>
+                    </div>
+                </a>
+                <nav>
+                    <a href="index.html"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
+                    <a href="about.html"><span class="lang-en">About</span><span class="lang-ta" style="display:none;">எங்களைப் பற்றி</span></a>
+                    <a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a>
+                    <a href="admissions.html" class="active"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a>
+                    <a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதிகள்</span></a>
+                    <a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படத்தொகுப்பு</span></a>
+                    <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்புக்கு</span></a>
+                    <a href="#form" class="btn-register"><span class="lang-en">Register</span><span class="lang-ta" style="display:none;">பதிவு செய்</span></a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><span class="lang-en">Admissions 2026-27</span><span class="lang-ta" style="display:none;">சேர்க்கை 2026-27</span></h1>
+            <p><span class="lang-en">Class 1 to 5 | Limited Seats Available</span><span class="lang-ta" style="display:none;">வகுப்பு 1 முதல் 5 வரை | குறைந்த இடங்கள் உள்ளன</span></p>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-box" id="form">
+                    <h2><span class="lang-en">Registration Form</span><span class="lang-ta" style="display:none;">பதிவு படிவம்</span></h2>
+                    <p><span class="lang-en">Fill the form below and we will contact you.</span><span class="lang-ta" style="display:none;">கீழே உள்ள படிவத்தை நிரப்பவும், நாங்கள் உங்களை தொடர்பு கொள்வோம்.</span></p>
+
+                    <form>
+                        <div class="form-group">
+                            <label><span class="lang-en">Student Name *</span><span class="lang-ta" style="display:none;">மாணவர் பெயர் *</span></label>
+                            <input type="text" required placeholder="Enter student name">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><span class="lang-en">Date of Birth *</span><span class="lang-ta" style="display:none;">பிறந்த தேதி *</span></label>
+                                <input type="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label><span class="lang-en">Gender *</span><span class="lang-ta" style="display:none;">பாலினம் *</span></label>
+                                <select required>
+                                    <option value=""><span class="lang-en">Select</span><span class="lang-ta" style="display:none;">தேர்வு செய்</span></option>
+                                    <option><span class="lang-en">Male</span><span class="lang-ta" style="display:none;">ஆண்</span></option>
+                                    <option><span class="lang-en">Female</span><span class="lang-ta" style="display:none;">பெண்</span></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="lang-en">Class Applying For *</span><span class="lang-ta" style="display:none;">விண்ணப்பிக்கும் வகுப்பு *</span></label>
+                            <select required>
+                                <option value=""><span class="lang-en">Select Class</span><span class="lang-ta" style="display:none;">வகுப்பு தேர்வு செய்</span></option>
+                                <option><span class="lang-en">Class 1</span><span class="lang-ta" style="display:none;">வகுப்பு 1</span></option>
+                                <option><span class="lang-en">Class 2</span><span class="lang-ta" style="display:none;">வகுப்பு 2</span></option>
+                                <option><span class="lang-en">Class 3</span><span class="lang-ta" style="display:none;">வகுப்பு 3</span></option>
+                                <option><span class="lang-en">Class 4</span><span class="lang-ta" style="display:none;">வகுப்பு 4</span></option>
+                                <option><span class="lang-en">Class 5</span><span class="lang-ta" style="display:none;">வகுப்பு 5</span></option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><span class="lang-en">Father's Name *</span><span class="lang-ta" style="display:none;">தந்தை பெயர் *</span></label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label><span class="lang-en">Mother's Name *</span><span class="lang-ta" style="display:none;">தாய் பெயர் *</span></label>
+                                <input type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="lang-en">Mobile Number *</span><span class="lang-ta" style="display:none;">கைபேசி எண் *</span></label>
+                            <input type="tel" required placeholder="+91 98765 43210">
+                        </div>
+                        <button type="submit" class="btn-submit"><span class="lang-en">Register Now</span><span class="lang-ta" style="display:none;">இப்போது பதிவு செய்</span></button>
+                    </form>
+
+                    <div class="contact-link">
+                        <p><span class="lang-en">Need help?</span><span class="lang-ta" style="display:none;">உதவி தேவையா?</span> <a href="https://wa.me/919876543210">💬 <span class="lang-en">WhatsApp Us</span><span class="lang-ta" style="display:none;">வாட்ஸ்அப் செய்யுங்கள்</span></a> | 📞 +91 98765 43210</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><span class="lang-en">© 2026 Vasanth Nursery And Primary School, Tirupattur. All Rights Reserved.</span><span class="lang-ta" style="display:none;">© 2026 வசந்த் நர்சரி மற்றும் தொடக்கப்பள்ளி, திருப்பத்தூர். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Language Toggle Script -->
+    <script>
+        function switchLang(lang) {
+            const enElements = document.querySelectorAll('.lang-en');
+            const taElements = document.querySelectorAll('.lang-ta');
+            const buttons = document.querySelectorAll('.lang-switch button');
+
+            if (lang === 'ta') {
+                enElements.forEach(el => el.style.display = 'none');
+                taElements.forEach(el => el.style.display = 'inline');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+                localStorage.setItem('preferredLang', 'ta');
+            } else {
+                enElements.forEach(el => el.style.display = 'inline');
+                taElements.forEach(el => el.style.display = 'none');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+                localStorage.setItem('preferredLang', 'en');
+            }
+        }
+
+        // Check for saved language preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang === 'ta') {
+                switchLang('ta');
+            }
+        });
+    </script>
+
+</body>
+</html>

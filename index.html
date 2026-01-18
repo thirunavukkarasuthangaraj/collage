@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vasanth Nursery And Primary School, Tirupattur - Quality primary education from 1st to 5th standard">
+    <title>Vasanth Nursery And Primary School | Tirupattur</title>
+    <link rel="icon" href="logo/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        .header-top {
+            background: #1a365d;
+            color: white;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+        .header-top-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-top span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .lang-switch {
+            display: flex;
+            gap: 5px;
+        }
+        .lang-switch button {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .lang-switch button.active,
+        .lang-switch button:hover {
+            background: white;
+            color: #1a365d;
+        }
+        .header-main {
+            padding: 15px 0;
+        }
+        .header-main-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo img {
+            height: 65px;
+            width: auto;
+        }
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a365d;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            font-size: 12px;
+            color: #718096;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        nav a {
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4a5568;
+            border-radius: 6px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        nav a:hover, nav a.active {
+            color: #2b6cb0;
+            background: #ebf8ff;
+        }
+        .btn-apply {
+            background: linear-gradient(135deg, #2b6cb0, #1a365d);
+            color: white !important;
+            padding: 12px 24px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            white-space: nowrap;
+        }
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(43,108,176,0.4);
+        }
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #1a365d;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            padding-top: 130px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 60px 0;
+        }
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        .hero-slider .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .hero-slider .slide {
+            min-width: 100%;
+            height: 450px;
+        }
+        .hero-slider .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .placeholder-img::before {
+            font-size: 80px;
+            margin-bottom: 15px;
+        }
+        .hero-slider .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .hero-slider .slider-nav button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .hero-slider .slider-nav button.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        .hero-slider .slider-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            z-index: 10;
+        }
+        .hero-slider .slider-arrows button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.9);
+            color: #667eea;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-slider .slider-arrows button:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            color: #fbd38d;
+        }
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        .btn-primary:hover {
+            background: #1a365d;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .btn-outline {
+            background: #f6ad55;
+            color: white;
+            border: none;
+        }
+        .btn-outline:hover {
+            background: #ed8936;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+        .hero-stat {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+        }
+        .hero-stat h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        .hero-stat p {
+            font-size: 12px;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* ========== FEATURES ========== */
+        .features {
+            padding: 100px 0;
+            background: #f7fafc;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+        .section-label {
+            display: inline-block;
+            background: #ebf8ff;
+            color: #2b6cb0;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 15px;
+        }
+        .section-header p {
+            color: #718096;
+            font-size: 17px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid #e2e8f0;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 40px;
+        }
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            color: #718096;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        .about-badge {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(102,126,234,0.4);
+        }
+        .about-badge h4 {
+            font-size: 42px;
+            font-weight: 800;
+        }
+        .about-badge span {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .about-content .section-label {
+            text-align: left;
+        }
+        .about-content h2 {
+            font-size: 38px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .about-content > p {
+            color: #718096;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .about-list {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+        .about-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #2d3748;
+        }
+        .about-list li span {
+            width: 30px;
+            height: 30px;
+            background: #c6f6d5;
+            color: #22543d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ========== PROGRAMS ========== */
+        .programs {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+        }
+        .programs .section-label {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .programs .section-header h2 {
+            color: white;
+        }
+        .programs .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .program-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s;
+        }
+        .program-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-8px);
+        }
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #fbd38d, #f6ad55);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 35px;
+        }
+        .program-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .program-card .grade {
+            color: #fbd38d;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        .program-card p {
+            opacity: 0.9;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ========== CTA ========== */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f6ad55, #ed8936);
+            text-align: center;
+            color: white;
+        }
+        .cta h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .cta p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 35px;
+        }
+        .cta .btn-white {
+            background: white;
+            color: #c05621;
+            padding: 18px 40px;
+            font-size: 16px;
+        }
+        .cta .btn-white:hover {
+            background: #1a365d;
+            color: white;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 80px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .footer-about p {
+            color: #a0aec0;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        footer h4 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        footer ul {
+            list-style: none;
+        }
+        footer ul li {
+            margin-bottom: 12px;
+        }
+        footer ul li a {
+            color: #a0aec0;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        footer ul li a:hover {
+            color: #667eea;
+            padding-left: 5px;
+        }
+        .footer-contact li {
+            display: flex;
+            gap: 12px;
+            color: #a0aec0;
+            font-size: 15px;
+            align-items: flex-start;
+        }
+        .footer-contact li span {
+            font-size: 16px;
+        }
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-slider { order: -1; }
+            .hero-slider .slide { height: 350px; }
+            .hero h1 { font-size: 40px; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-badge { right: 20px; bottom: -20px; }
+            .programs-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .mobile-menu { display: block; }
+            .header-top-inner { flex-direction: column; gap: 8px; text-align: center; }
+            .hero { padding-top: 150px; }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+            .hero-slider .slide { height: 280px; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .hero-stat { padding: 15px 10px; }
+            .hero-stat h3 { font-size: 24px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .cta h2 { font-size: 32px; }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 25px rgba(37,211,102,0.4);
+            z-index: 999;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(37,211,102,0.5);
+        }
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 5px 25px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 5px 35px rgba(37,211,102,0.6); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-inner">
+                <span>📞 +91 98765 43210 | ✉️ info@vasanthschool.edu.in</span>
+                <div class="lang-switch">
+                    <button class="active">English</button>
+                    <button>தமிழ்</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-main-inner">
+                <a href="index.html" class="logo">
+                    <img src="logo/logo.png" alt="Vasanth Nursery And Primary School">
+                    <div class="logo-text">
+                        <h1>Vasanth Nursery And Primary School</h1>
+                        <span>Tirupattur, Tamil Nadu</span>
+                    </div>
+                </a>
+                <nav>
+                    <a href="index.html" class="active"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
+                    <a href="about.html"><span class="lang-en">About</span><span class="lang-ta" style="display:none;">பற்றி</span></a>
+                    <a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a>
+                    <a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a>
+                    <a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதி</span></a>
+                    <a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படங்கள்</span></a>
+                    <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
+                    <a href="admissions.html" class="btn-apply"><span class="lang-en">Register</span><span class="lang-ta" style="display:none;">பதிவு</span></a>
+                </nav>
+                <button class="mobile-menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="lang-en">🎓 Admissions Open for 2026-27</span>
+                        <span class="lang-ta" style="display:none;">🎓 2026-27 சேர்க்கை தொடங்கியது</span>
+                    </div>
+                    <h1>
+                        <span class="lang-en">Nurturing <span>Young Minds</span> For A Brighter Future</span>
+                        <span class="lang-ta" style="display:none;">ஒளிமயமான எதிர்காலத்திற்காக <span>இளம் மனங்களை</span> வளர்க்கிறோம்</span>
+                    </h1>
+                    <p>
+                        <span class="lang-en">Vasanth Nursery And Primary School provides exceptional education from 1st to 5th standard with digital classrooms, experienced teachers, and safe transport facility in Tirupattur.</span>
+                        <span class="lang-ta" style="display:none;">வசந்த் நர்சரி மற்றும் தொடக்கப்பள்ளி திருப்பத்தூரில் 1 முதல் 5 வகுப்பு வரை டிஜிட்டல் வகுப்பறைகள், அனுபவம் வாய்ந்த ஆசிரியர்கள் மற்றும் பாதுகாப்பான போக்குவரத்து வசதியுடன் சிறந்த கல்வியை வழங்குகிறது.</span>
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="admissions.html" class="btn btn-primary">
+                            <span class="lang-en">Apply for Admission →</span>
+                            <span class="lang-ta" style="display:none;">சேர்க்கைக்கு விண்ணப்பிக்க →</span>
+                        </a>
+                        <a href="about.html" class="btn btn-outline">
+                            <span class="lang-en">Learn More</span>
+                            <span class="lang-ta" style="display:none;">மேலும் அறிக</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <h3>400+</h3>
+                            <p><span class="lang-en">Happy Students</span><span class="lang-ta" style="display:none;">மகிழ்ச்சியான மாணவர்கள்</span></p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>20+</h3>
+                            <p><span class="lang-en">Expert Teachers</span><span class="lang-ta" style="display:none;">சிறந்த ஆசிரியர்கள்</span></p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>1-5</h3>
+                            <p><span class="lang-en">Standards</span><span class="lang-ta" style="display:none;">வகுப்புகள்</span></p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>🚌</h3>
+                            <p><span class="lang-en">Transport Available</span><span class="lang-ta" style="display:none;">போக்குவரத்து வசதி</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Slider -->
+                <div class="hero-slider">
+                    <div class="slides" id="heroSlides">
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&h=600&fit=crop" alt="School Building">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&h=600&fit=crop" alt="Classroom">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop" alt="Students">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?w=800&h=600&fit=crop" alt="Activities">
+                        </div>
+                    </div>
+                    <div class="slider-arrows">
+                        <button onclick="prevSlide()">❮</button>
+                        <button onclick="nextSlide()">❯</button>
+                    </div>
+                    <div class="slider-nav" id="sliderNav">
+                        <button class="active" onclick="goToSlide(0)"></button>
+                        <button onclick="goToSlide(1)"></button>
+                        <button onclick="goToSlide(2)"></button>
+                        <button onclick="goToSlide(3)"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Why Choose Us</span><span class="lang-ta" style="display:none;">ஏன் எங்களை தேர்வு செய்ய வேண்டும்</span></span>
+                <h2><span class="lang-en">What Makes Us Special</span><span class="lang-ta" style="display:none;">எங்களை சிறப்பானவராக்குவது என்ன</span></h2>
+                <p><span class="lang-en">We provide the best foundation for your child's educational journey</span><span class="lang-ta" style="display:none;">உங்கள் குழந்தையின் கல்வி பயணத்திற்கு சிறந்த அடித்தளத்தை வழங்குகிறோம்</span></p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3><span class="lang-en">Digital Classroom</span><span class="lang-ta" style="display:none;">டிஜிட்டல் வகுப்பறை</span></h3>
+                    <p><span class="lang-en">Modern smart boards, projectors & interactive tools for engaging education</span><span class="lang-ta" style="display:none;">நவீன ஸ்மார்ட் போர்டுகள், ப்ரொஜெக்டர்கள் மற்றும் ஈர்க்கும் கல்விக்கான ஊடாடும் கருவிகள்</span></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚌</div>
+                    <h3><span class="lang-en">Safe Transport</span><span class="lang-ta" style="display:none;">பாதுகாப்பான போக்குவரத்து</span></h3>
+                    <p><span class="lang-en">GPS-enabled buses covering all areas of Tirupattur with trained drivers</span><span class="lang-ta" style="display:none;">பயிற்சி பெற்ற ஓட்டுநர்களுடன் திருப்பத்தூரின் அனைத்து பகுதிகளையும் உள்ளடக்கிய GPS பேருந்துகள்</span></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3><span class="lang-en">Quality Teachers</span><span class="lang-ta" style="display:none;">தரமான ஆசிரியர்கள்</span></h3>
+                    <p><span class="lang-en">20+ experienced teachers providing personalized attention to each child</span><span class="lang-ta" style="display:none;">ஒவ்வொரு குழந்தைக்கும் தனிப்பட்ட கவனம் செலுத்தும் 20+ அனுபவம் வாய்ந்த ஆசிரியர்கள்</span></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3><span class="lang-en">Holistic Growth</span><span class="lang-ta" style="display:none;">முழுமையான வளர்ச்சி</span></h3>
+                    <p><span class="lang-en">Focus on academics, sports, arts, and character development</span><span class="lang-ta" style="display:none;">கல்வி, விளையாட்டு, கலை மற்றும் குணாதிசய வளர்ச்சியில் கவனம்</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=500&fit=crop" alt="School">
+                    <div class="about-badge">
+                        <h4>400+</h4>
+                        <span><span class="lang-en">Students</span><span class="lang-ta" style="display:none;">மாணவர்கள்</span></span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label"><span class="lang-en">About Our School</span><span class="lang-ta" style="display:none;">எங்கள் பள்ளியைப் பற்றி</span></span>
+                    <h2><span class="lang-en">Best Primary School in Tirupattur</span><span class="lang-ta" style="display:none;">திருப்பத்தூரின் சிறந்த தொடக்கப்பள்ளி</span></h2>
+                    <p><span class="lang-en">Vasanth Nursery And Primary School is committed to providing quality education that builds strong foundations for young learners. Our motto "Light of the World" guides us in nurturing every child.</span><span class="lang-ta" style="display:none;">வசந்த் நர்சரி மற்றும் தொடக்கப்பள்ளி இளம் கற்பவர்களுக்கு வலுவான அடித்தளத்தை உருவாக்கும் தரமான கல்வியை வழங்குவதில் உறுதிபூண்டுள்ளது. "உலகின் ஒளி" என்ற எங்கள் குறிக்கோள் ஒவ்வொரு குழந்தையையும் வளர்ப்பதில் எங்களுக்கு வழிகாட்டுகிறது.</span></p>
+                    <ul class="about-list">
+                        <li><span>✓</span> <span class="lang-en">Quality Education from 1st to 5th Standard</span><span class="lang-ta" style="display:none;">1 முதல் 5 வகுப்பு வரை தரமான கல்வி</span></li>
+                        <li><span>✓</span> <span class="lang-en">Digital Classrooms with Smart Boards</span><span class="lang-ta" style="display:none;">ஸ்மார்ட் போர்டுகளுடன் டிஜிட்டல் வகுப்பறைகள்</span></li>
+                        <li><span>✓</span> <span class="lang-en">Safe & Reliable Transport Facility</span><span class="lang-ta" style="display:none;">பாதுகாப்பான மற்றும் நம்பகமான போக்குவரத்து வசதி</span></li>
+                        <li><span>✓</span> <span class="lang-en">20+ Qualified & Caring Teachers</span><span class="lang-ta" style="display:none;">20+ தகுதியான மற்றும் அக்கறையுள்ள ஆசிரியர்கள்</span></li>
+                        <li><span>✓</span> <span class="lang-en">Activity-Based Learning Approach</span><span class="lang-ta" style="display:none;">செயல்பாடு அடிப்படையிலான கற்றல் அணுகுமுறை</span></li>
+                    </ul>
+                    <a href="about.html" class="btn btn-primary"><span class="lang-en">Learn More About Us</span><span class="lang-ta" style="display:none;">எங்களைப் பற்றி மேலும் அறிக</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Our Programs</span><span class="lang-ta" style="display:none;">எங்கள் திட்டங்கள்</span></span>
+                <h2><span class="lang-en">Academic Excellence</span><span class="lang-ta" style="display:none;">கல்வி சிறப்பு</span></h2>
+                <p><span class="lang-en">Quality education for every stage of primary schooling</span><span class="lang-ta" style="display:none;">தொடக்கக் கல்வியின் ஒவ்வொரு நிலைக்கும் தரமான கல்வி</span></p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">📚</div>
+                    <h3><span class="lang-en">Junior Primary</span><span class="lang-ta" style="display:none;">ஜூனியர் பிரைமரி</span></h3>
+                    <p class="grade"><span class="lang-en">Class 1 - 2</span><span class="lang-ta" style="display:none;">வகுப்பு 1 - 2</span></p>
+                    <p><span class="lang-en">Building strong foundations through fun activities, basic reading, writing and numeracy skills</span><span class="lang-ta" style="display:none;">வேடிக்கையான செயல்பாடுகள், அடிப்படை வாசிப்பு, எழுதுதல் மற்றும் எண் திறன்கள் மூலம் வலுவான அடித்தளங்களை உருவாக்குதல்</span></p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">📖</div>
+                    <h3><span class="lang-en">Middle Primary</span><span class="lang-ta" style="display:none;">மிடில் பிரைமரி</span></h3>
+                    <p class="grade"><span class="lang-en">Class 3 - 4</span><span class="lang-ta" style="display:none;">வகுப்பு 3 - 4</span></p>
+                    <p><span class="lang-en">Developing analytical thinking with subject-specific knowledge and computer basics</span><span class="lang-ta" style="display:none;">பாட-குறிப்பிட்ட அறிவு மற்றும் கணினி அடிப்படைகளுடன் பகுப்பாய்வு சிந்தனையை வளர்த்தல்</span></p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🎓</div>
+                    <h3><span class="lang-en">Senior Primary</span><span class="lang-ta" style="display:none;">சீனியர் பிரைமரி</span></h3>
+                    <p class="grade"><span class="lang-en">Class 5</span><span class="lang-ta" style="display:none;">வகுப்பு 5</span></p>
+                    <p><span class="lang-en">Comprehensive academics preparing students for higher education</span><span class="lang-ta" style="display:none;">உயர்கல்விக்கு மாணவர்களை தயார்படுத்தும் விரிவான கல்வி</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2><span class="lang-en">Admissions Open for 2026-27</span><span class="lang-ta" style="display:none;">2026-27 சேர்க்கை தொடங்கியது</span></h2>
+            <p><span class="lang-en">Give your child the best primary education at Vasanth Nursery And Primary School, Tirupattur</span><span class="lang-ta" style="display:none;">திருப்பத்தூர் வசந்த் நர்சரி மற்றும் தொடக்கப்பள்ளியில் உங்கள் குழந்தைக்கு சிறந்த தொடக்கக் கல்வியை வழங்குங்கள்</span></p>
+            <a href="admissions.html" class="btn btn-white"><span class="lang-en">Apply Now →</span><span class="lang-ta" style="display:none;">இப்போது விண்ணப்பிக்கவும் →</span></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="logo/logo.png" alt="Vasanth Nursery And Primary School">
+                    <p><span class="lang-en">Providing quality primary education from 1st to 5th standard with 400+ students, 20+ teachers, digital classrooms and transport facility.</span><span class="lang-ta" style="display:none;">400+ மாணவர்கள், 20+ ஆசிரியர்கள், டிஜிட்டல் வகுப்பறைகள் மற்றும் போக்குவரத்து வசதியுடன் 1 முதல் 5 வகுப்பு வரை தரமான தொடக்கக் கல்வியை வழங்குகிறோம்.</span></p>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Quick Links</span><span class="lang-ta" style="display:none;">விரைவு இணைப்புகள்</span></h4>
+                    <ul>
+                        <li><a href="about.html"><span class="lang-en">About Us</span><span class="lang-ta" style="display:none;">எங்களைப் பற்றி</span></a></li>
+                        <li><a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a></li>
+                        <li><a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a></li>
+                        <li><a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதிகள்</span></a></li>
+                        <li><a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படத்தொகுப்பு</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></h4>
+                    <ul>
+                        <li><a href="academics.html"><span class="lang-en">Class 1 - 2</span><span class="lang-ta" style="display:none;">வகுப்பு 1 - 2</span></a></li>
+                        <li><a href="academics.html"><span class="lang-en">Class 3 - 4</span><span class="lang-ta" style="display:none;">வகுப்பு 3 - 4</span></a></li>
+                        <li><a href="academics.html"><span class="lang-en">Class 5</span><span class="lang-ta" style="display:none;">வகுப்பு 5</span></a></li>
+                        <li><a href="faculty.html"><span class="lang-en">Our Faculty</span><span class="lang-ta" style="display:none;">எங்கள் ஆசிரியர்கள்</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Contact Us</span><span class="lang-ta" style="display:none;">தொடர்பு கொள்ளுங்கள்</span></h4>
+                    <ul class="footer-contact">
+                        <li><span>📍</span> <span class="lang-en">Tirupattur, Tamil Nadu</span><span class="lang-ta" style="display:none;">திருப்பத்தூர், தமிழ்நாடு</span></li>
+                        <li><span>📞</span> +91 98765 43210</li>
+                        <li><span>✉️</span> info@vasanthschool.edu.in</li>
+                        <li><span>🕐</span> <span class="lang-en">Mon - Sat: 8AM - 4PM</span><span class="lang-ta" style="display:none;">திங்கள் - சனி: காலை 8 - மாலை 4</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><span class="lang-en">© 2026 Vasanth Nursery And Primary School, Tirupattur. All Rights Reserved.</span><span class="lang-ta" style="display:none;">© 2026 வசந்த் நர்சரி மற்றும் தொடக்கப்பள்ளி, திருப்பத்தூர். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919876543210?text=Hello%2C%20I%20am%20interested%20in%20admission%20at%20Vasanth%20School.%20Please%20share%20details." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Hero Slider Script -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 4;
+        const slides = document.getElementById('heroSlides');
+        const navButtons = document.querySelectorAll('#sliderNav button');
+
+        function updateSlider() {
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            navButtons.forEach((btn, index) => {
+                btn.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Auto-slide every 4 seconds
+        setInterval(nextSlide, 4000);
+
+        // Language Toggle
+        const langButtons = document.querySelectorAll('.lang-switch button');
+        const langEn = document.querySelectorAll('.lang-en');
+        const langTa = document.querySelectorAll('.lang-ta');
+
+        function setLanguage(lang) {
+            localStorage.setItem('language', lang);
+            if (lang === 'ta') {
+                langEn.forEach(el => el.style.display = 'none');
+                langTa.forEach(el => el.style.display = 'inline');
+                langButtons[0].classList.remove('active');
+                langButtons[1].classList.add('active');
+            } else {
+                langEn.forEach(el => el.style.display = 'inline');
+                langTa.forEach(el => el.style.display = 'none');
+                langButtons[0].classList.add('active');
+                langButtons[1].classList.remove('active');
+            }
+        }
+
+        langButtons[0].addEventListener('click', () => setLanguage('en'));
+        langButtons[1].addEventListener('click', () => setLanguage('ta'));
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('language') || 'en';
+        setLanguage(savedLang);
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

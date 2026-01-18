@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore academic programs at Vasanth Nursery And Primary School Tirupattur - Quality primary education from 1st to 5th standard.">
+    <title>Academics - Vasanth Nursery And Primary School, Tirupattur</title>
+    <link rel="icon" href="logo/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: #2d3748; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { position: fixed; top: 0; left: 0; right: 0; background: white; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+        .header-top { background: #1a365d; color: white; padding: 8px 0; font-size: 13px; }
+        .header-top-inner { display: flex; justify-content: space-between; align-items: center; }
+        .header-top span { display: flex; align-items: center; gap: 6px; }
+        .lang-switch { display: flex; gap: 5px; }
+        .lang-switch button { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 3px; cursor: pointer; font-size: 12px; transition: all 0.3s; }
+        .lang-switch button.active, .lang-switch button:hover { background: white; color: #1a365d; }
+        .header-main { padding: 15px 0; }
+        .header-main-inner { display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo img { height: 65px; width: auto; }
+        .logo-text h1 { font-size: 18px; font-weight: 700; color: #1a365d; line-height: 1.2; }
+        .logo-text span { font-size: 12px; color: #718096; }
+        nav { display: flex; align-items: center; gap: 5px; }
+        nav a { padding: 10px 16px; font-size: 14px; font-weight: 500; color: #4a5568; border-radius: 6px; transition: all 0.3s; }
+        nav a:hover, nav a.active { color: #2b6cb0; background: #ebf8ff; }
+        .btn-apply { background: linear-gradient(135deg, #2b6cb0, #1a365d); color: white !important; padding: 12px 24px !important; border-radius: 8px !important; font-weight: 600 !important; }
+        .btn-apply:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(43,108,176,0.4); }
+        .mobile-menu { display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #1a365d; }
+
+        /* Page Header */
+        .page-header { padding: 160px 0 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center; color: white; }
+        .page-header h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
+        .breadcrumb { display: flex; justify-content: center; gap: 10px; font-size: 15px; opacity: 0.9; }
+        .breadcrumb a { color: white; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        .bg-light { background: #f7fafc; }
+        .bg-white { background: white; }
+        .section-header { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+        .section-label { display: inline-block; background: #ebf8ff; color: #2b6cb0; padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .section-header h2 { font-size: 38px; font-weight: 700; color: #1a365d; margin-bottom: 15px; }
+        .section-header p { color: #718096; font-size: 17px; }
+
+        /* About Grid */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-image img { width: 100%; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+        .about-content h2 { font-size: 34px; font-weight: 700; color: #1a365d; margin-bottom: 20px; line-height: 1.2; }
+        .about-content p { color: #718096; font-size: 16px; line-height: 1.8; margin-bottom: 15px; }
+        .about-list { list-style: none; margin: 25px 0; }
+        .about-list li { display: flex; align-items: center; gap: 15px; padding: 10px 0; font-size: 15px; color: #2d3748; }
+        .about-list li span.check { width: 26px; height: 26px; background: #c6f6d5; color: #22543d; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+
+        /* Cards Grid */
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .card { background: white; padding: 35px 25px; border-radius: 15px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); transition: all 0.4s; border: 1px solid #e2e8f0; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-color: #667eea; }
+        .feature-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 36px; }
+        .card h3 { font-size: 20px; font-weight: 600; color: #1a365d; margin-bottom: 12px; }
+        .card p { color: #718096; font-size: 15px; line-height: 1.7; }
+
+        /* Stats Bar */
+        .stats-bar { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); padding: 60px 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .stat-item { text-align: center; color: white; }
+        .stat-item h3 { font-size: 42px; font-weight: 800; margin-bottom: 5px; }
+        .stat-item p { font-size: 14px; opacity: 0.9; }
+
+        /* CTA */
+        .cta { padding: 80px 0; background: linear-gradient(135deg, #f6ad55, #ed8936); text-align: center; color: white; }
+        .cta h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
+        .cta p { font-size: 18px; opacity: 0.95; margin-bottom: 30px; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-white { background: white; color: #c05621; }
+        .btn-white:hover { background: #1a365d; color: white; transform: translateY(-3px); }
+        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); }
+        .btn-outline:hover { background: white; color: #ed8936; }
+
+        /* Footer */
+        footer { background: #1a202c; color: white; padding: 70px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 40px; }
+        .footer-about img { height: 60px; margin-bottom: 20px; }
+        .footer-about p { color: #a0aec0; font-size: 15px; line-height: 1.8; }
+        footer h4 { font-size: 18px; margin-bottom: 20px; font-weight: 600; }
+        footer ul { list-style: none; }
+        footer ul li { margin-bottom: 12px; }
+        footer ul li a { color: #a0aec0; font-size: 15px; transition: all 0.3s; }
+        footer ul li a:hover { color: #667eea; padding-left: 5px; }
+        .footer-contact li { display: flex; gap: 12px; color: #a0aec0; font-size: 15px; }
+        .footer-bottom { padding-top: 25px; border-top: 1px solid #2d3748; text-align: center; color: #718096; font-size: 14px; }
+
+        /* Language Toggle */
+        .lang-ta { display: none; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .mobile-menu { display: block; }
+            .header-top-inner { flex-direction: column; gap: 8px; text-align: center; }
+            .page-header { padding: 140px 0 60px; }
+            .page-header h1 { font-size: 36px; }
+            .grid-4 { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; }
+            .cta h2 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-inner">
+                <span>📞 +91 98765 43210 | ✉️ info@vasanthschool.edu.in</span>
+                <div class="lang-switch">
+                    <button class="active" onclick="switchLanguage('en')">English</button>
+                    <button onclick="switchLanguage('ta')">தமிழ்</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-main-inner">
+                <a href="index.html" class="logo">
+                    <img src="logo/logo.png" alt="Vasanth Nursery And Primary School">
+                    <div class="logo-text">
+                        <h1><span class="lang-en">Vasanth Nursery And Primary School</span><span class="lang-ta" style="display:none;">வசந்த் நர்சரி மற்றும் ஆரம்பப் பள்ளி</span></h1>
+                        <span><span class="lang-en">Tirupattur, Tamil Nadu</span><span class="lang-ta" style="display:none;">திருப்பத்தூர், தமிழ்நாடு</span></span>
+                    </div>
+                </a>
+                <nav>
+                    <a href="index.html"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
+                    <a href="about.html"><span class="lang-en">About</span><span class="lang-ta" style="display:none;">எங்களை பற்றி</span></a>
+                    <a href="academics.html" class="active"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a>
+                    <a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a>
+                    <a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதிகள்</span></a>
+                    <a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படத்தொகுப்பு</span></a>
+                    <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
+                    <a href="admissions.html" class="btn-apply"><span class="lang-en">Register</span><span class="lang-ta" style="display:none;">பதிவு செய்க</span></a>
+                </nav>
+                <button class="mobile-menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></h1>
+            <div class="breadcrumb">
+                <a href="index.html"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
+                <span>/</span>
+                <span><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Overview -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Our Curriculum</span><span class="lang-ta" style="display:none;">எங்கள் பாடத்திட்டம்</span></span>
+                <h2><span class="lang-en">Primary Education Excellence</span><span class="lang-ta" style="display:none;">தரமான ஆரம்பக் கல்வி</span></h2>
+                <p><span class="lang-en">Quality primary education from 1st to 5th standard with 20+ dedicated teachers and modern teaching methods.</span><span class="lang-ta" style="display:none;">20+ அர்ப்பணிப்புள்ள ஆசிரியர்கள் மற்றும் நவீன கற்பித்தல் முறைகளுடன் 1வது முதல் 5வது வகுப்பு வரை தரமான ஆரம்பக் கல்வி.</span></p>
+            </div>
+            <div class="grid-4">
+                <div class="card">
+                    <div class="feature-icon">📚</div>
+                    <h3><span class="lang-en">Strong Foundation</span><span class="lang-ta" style="display:none;">வலுவான அடித்தளம்</span></h3>
+                    <p><span class="lang-en">Building essential reading, writing and numeracy skills.</span><span class="lang-ta" style="display:none;">அத்தியாவசிய வாசிப்பு, எழுத்து மற்றும் கணக்கிடும் திறன்களை உருவாக்குதல்.</span></p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3><span class="lang-en">20+ Teachers</span><span class="lang-ta" style="display:none;">20+ ஆசிரியர்கள்</span></h3>
+                    <p><span class="lang-en">Experienced and dedicated teaching faculty.</span><span class="lang-ta" style="display:none;">அனுபவமுள்ள மற்றும் அர்ப்பணிப்புள்ள ஆசிரிய குழு.</span></p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🎯</div>
+                    <h3><span class="lang-en">Activity Based</span><span class="lang-ta" style="display:none;">செயல்பாடு அடிப்படை கற்றல்</span></h3>
+                    <p><span class="lang-en">Learning through activities and hands-on experience.</span><span class="lang-ta" style="display:none;">செயல்பாடுகள் மற்றும் நேரடி அனுபவம் மூலம் கற்றல்.</span></p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">📝</div>
+                    <h3><span class="lang-en">Regular Assessment</span><span class="lang-ta" style="display:none;">வழக்கமான மதிப்பீடு</span></h3>
+                    <p><span class="lang-en">Continuous evaluation for better learning outcomes.</span><span class="lang-ta" style="display:none;">சிறந்த கற்றல் விளைவுகளுக்கான தொடர்ச்சியான மதிப்பீடு.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Class 1-2 -->
+    <section class="bg-light" id="junior">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=450&fit=crop" alt="Class 1-2">
+                </div>
+                <div class="about-content">
+                    <span class="section-label"><span class="lang-en">Class 1 - 2</span><span class="lang-ta" style="display:none;">வகுப்பு 1 - 2</span></span>
+                    <h2><span class="lang-en">Junior Primary</span><span class="lang-ta" style="display:none;">ஜூனியர் பிரைமரி</span></h2>
+                    <p><span class="lang-en">Our junior primary program focuses on building a strong foundation through fun and engaging activities. Children learn basic reading, writing, and numeracy skills in a nurturing environment.</span><span class="lang-ta" style="display:none;">எங்கள் ஜூனியர் பிரைமரி திட்டம் வேடிக்கையான மற்றும் ஈர்க்கும் செயல்பாடுகள் மூலம் வலுவான அடித்தளத்தை உருவாக்குவதில் கவனம் செலுத்துகிறது. குழந்தைகள் வளர்ப்பு சூழலில் அடிப்படை வாசிப்பு, எழுத்து மற்றும் கணக்கிடும் திறன்களைக் கற்றுக்கொள்கிறார்கள்.</span></p>
+                    <p><span class="lang-en">The curriculum includes English, Tamil, Mathematics, Environmental Studies, Art & Craft, Music, and Physical Education.</span><span class="lang-ta" style="display:none;">பாடத்திட்டத்தில் ஆங்கிலம், தமிழ், கணிதம், சுற்றுச்சூழல் படிப்பு, கலை & கைவினை, இசை மற்றும் உடற்கல்வி ஆகியவை அடங்கும்.</span></p>
+                    <ul class="about-list">
+                        <li><span class="check">✓</span> <span class="lang-en">Activity-based learning approach</span><span class="lang-ta" style="display:none;">செயல்பாடு அடிப்படை கற்றல் அணுகுமுறை</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Basic language and numeracy skills</span><span class="lang-ta" style="display:none;">அடிப்படை மொழி மற்றும் கணக்கிடும் திறன்கள்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Creative arts and music</span><span class="lang-ta" style="display:none;">படைப்பு கலைகள் மற்றும் இசை</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Physical education and games</span><span class="lang-ta" style="display:none;">உடற்கல்வி மற்றும் விளையாட்டுகள்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Value education and good habits</span><span class="lang-ta" style="display:none;">மதிப்பு கல்வி மற்றும் நல்ல பழக்கவழக்கங்கள்</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Class 3-4 -->
+    <section class="bg-white" id="middle">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-label"><span class="lang-en">Class 3 - 4</span><span class="lang-ta" style="display:none;">வகுப்பு 3 - 4</span></span>
+                    <h2><span class="lang-en">Middle Primary</span><span class="lang-ta" style="display:none;">மிடில் பிரைமரி</span></h2>
+                    <p><span class="lang-en">The middle primary program builds upon the foundation and introduces more structured learning. Students develop analytical thinking and subject-specific knowledge.</span><span class="lang-ta" style="display:none;">மிடில் பிரைமரி திட்டம் அடித்தளத்தின் மீது கட்டமைக்கப்பட்டு மேலும் கட்டமைக்கப்பட்ட கற்றலை அறிமுகப்படுத்துகிறது. மாணவர்கள் பகுப்பாய்வு சிந்தனை மற்றும் பாட-குறிப்பிட்ட அறிவை வளர்த்துக்கொள்கிறார்கள்.</span></p>
+                    <p><span class="lang-en">Core subjects include English, Tamil, Mathematics, Environmental Science, along with Computer basics, Art and Physical Education.</span><span class="lang-ta" style="display:none;">முக்கிய பாடங்களில் ஆங்கிலம், தமிழ், கணிதம், சுற்றுச்சூழல் அறிவியல், கணினி அடிப்படைகள், கலை மற்றும் உடற்கல்வி ஆகியவை அடங்கும்.</span></p>
+                    <ul class="about-list">
+                        <li><span class="check">✓</span> <span class="lang-en">Subject-specific teaching</span><span class="lang-ta" style="display:none;">பாட-குறிப்பிட்ட கற்பித்தல்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Introduction to computer basics</span><span class="lang-ta" style="display:none;">கணினி அடிப்படைகள் அறிமுகம்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Project-based learning</span><span class="lang-ta" style="display:none;">திட்ட அடிப்படை கற்றல்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Reading and comprehension skills</span><span class="lang-ta" style="display:none;">வாசிப்பு மற்றும் புரிதல் திறன்கள்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Problem-solving abilities</span><span class="lang-ta" style="display:none;">சிக்கல் தீர்க்கும் திறன்கள்</span></li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=450&fit=crop" alt="Class 3-4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Class 5 -->
+    <section class="bg-light" id="senior">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=450&fit=crop" alt="Class 5">
+                </div>
+                <div class="about-content">
+                    <span class="section-label"><span class="lang-en">Class 5</span><span class="lang-ta" style="display:none;">வகுப்பு 5</span></span>
+                    <h2><span class="lang-en">Senior Primary</span><span class="lang-ta" style="display:none;">சீனியர் பிரைமரி</span></h2>
+                    <p><span class="lang-en">Our senior primary program prepares students for higher education with comprehensive academics and skill development. Students are equipped with strong fundamentals.</span><span class="lang-ta" style="display:none;">எங்கள் சீனியர் பிரைமரி திட்டம் மாணவர்களை விரிவான கல்வி மற்றும் திறன் மேம்பாட்டுடன் உயர்கல்விக்கு தயார்படுத்துகிறது. மாணவர்கள் வலுவான அடிப்படைகளுடன் தயார்படுத்தப்படுகிறார்கள்.</span></p>
+                    <p><span class="lang-en">Students study English, Tamil, Mathematics, Science, Social Studies, Computer Science, and participate in various co-curricular activities.</span><span class="lang-ta" style="display:none;">மாணவர்கள் ஆங்கிலம், தமிழ், கணிதம், அறிவியல், சமூக அறிவியல், கணினி அறிவியல் படிக்கிறார்கள் மற்றும் பல்வேறு கூட்டு-பாட செயல்பாடுகளில் பங்கேற்கிறார்கள்.</span></p>
+                    <ul class="about-list">
+                        <li><span class="check">✓</span> <span class="lang-en">Comprehensive subject coverage</span><span class="lang-ta" style="display:none;">விரிவான பாட கவரேஜ்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Preparation for higher classes</span><span class="lang-ta" style="display:none;">உயர் வகுப்புகளுக்கான தயாரிப்பு</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Leadership and team activities</span><span class="lang-ta" style="display:none;">தலைமை மற்றும் குழு செயல்பாடுகள்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Enhanced computer skills</span><span class="lang-ta" style="display:none;">மேம்படுத்தப்பட்ட கணினி திறன்கள்</span></li>
+                        <li><span class="check">✓</span> <span class="lang-en">Personality development</span><span class="lang-ta" style="display:none;">ஆளுமை மேம்பாடு</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Co-Curricular -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><span class="lang-en">Beyond Academics</span><span class="lang-ta" style="display:none;">கல்விக்கு அப்பால்</span></span>
+                <h2><span class="lang-en">Co-Curricular Activities</span><span class="lang-ta" style="display:none;">கூட்டு-பாட செயல்பாடுகள்</span></h2>
+                <p><span class="lang-en">We believe in holistic development through various activities beyond the classroom.</span><span class="lang-ta" style="display:none;">வகுப்பறைக்கு அப்பால் பல்வேறு செயல்பாடுகள் மூலம் முழுமையான வளர்ச்சியில் நாங்கள் நம்புகிறோம்.</span></p>
+            </div>
+            <div class="grid-4">
+                <div class="card">
+                    <div class="feature-icon">🏃</div>
+                    <h3><span class="lang-en">Sports</span><span class="lang-ta" style="display:none;">விளையாட்டு</span></h3>
+                    <p><span class="lang-en">Running, Games, Physical exercises and Indoor games.</span><span class="lang-ta" style="display:none;">ஓட்டம், விளையாட்டுகள், உடல் பயிற்சிகள் மற்றும் உள்அரங்கு விளையாட்டுகள்.</span></p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🎨</div>
+                    <h3><span class="lang-en">Arts</span><span class="lang-ta" style="display:none;">கலை & கைவினை</span></h3>
+                    <p><span class="lang-en">Drawing, Painting, Craft, and Creative Expression.</span><span class="lang-ta" style="display:none;">ஓவியம், வண்ணப்பூச்சு, கைவினை மற்றும் படைப்பு வெளிப்பாடு.</span></p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🎵</div>
+                    <h3><span class="lang-en">Music & Dance</span><span class="lang-ta" style="display:none;">இசை & நடனம்</span></h3>
+                    <p><span class="lang-en">Rhymes, Songs, and Cultural dance activities.</span><span class="lang-ta" style="display:none;">ரைம்ஸ், பாடல்கள் மற்றும் கலாச்சார நடன செயல்பாடுகள்.</span></p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">📖</div>
+                    <h3><span class="lang-en">Reading & Stories</span><span class="lang-ta" style="display:none;">வாசிப்பு & கதைகள்</span></h3>
+                    <p><span class="lang-en">Story telling, Reading sessions, and Moral stories.</span><span class="lang-ta" style="display:none;">கதை சொல்லல், வாசிப்பு அமர்வுகள் மற்றும் நீதி கதைகள்.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>400+</h3>
+                    <p><span class="lang-en">Students Enrolled</span><span class="lang-ta" style="display:none;">மாணவர்கள் சேர்ந்தனர்</span></p>
+                </div>
+                <div class="stat-item">
+                    <h3>1-5</h3>
+                    <p><span class="lang-en">Standards</span><span class="lang-ta" style="display:none;">வகுப்புகள்</span></p>
+                </div>
+                <div class="stat-item">
+                    <h3>20+</h3>
+                    <p><span class="lang-en">Qualified Teachers</span><span class="lang-ta" style="display:none;">தகுதியான ஆசிரியர்கள்</span></p>
+                </div>
+                <div class="stat-item">
+                    <h3>🚌</h3>
+                    <p><span class="lang-en">Transport Available</span><span class="lang-ta" style="display:none;">போக்குவரத்து வசதி</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2><span class="lang-en">Ready to Join Vasanth School?</span><span class="lang-ta" style="display:none;">வசந்த் பள்ளியில் சேர தயாரா?</span></h2>
+            <p><span class="lang-en">Give your child the best primary education. Admissions open for 2026-27.</span><span class="lang-ta" style="display:none;">உங்கள் குழந்தைக்கு சிறந்த ஆரம்பக் கல்வியை வழங்குங்கள். 2026-27 சேர்க்கை தொடங்கியது.</span></p>
+            <div class="cta-buttons">
+                <a href="admissions.html" class="btn btn-white"><span class="lang-en">Apply Now</span><span class="lang-ta" style="display:none;">இப்போது விண்ணப்பிக்கவும்</span></a>
+                <a href="contact.html" class="btn btn-outline"><span class="lang-en">Contact Us</span><span class="lang-ta" style="display:none;">எங்களை தொடர்பு கொள்ளுங்கள்</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="logo/logo.png" alt="Vasanth Nursery And Primary School">
+                    <p><span class="lang-en">Providing quality primary education from 1st to 5th standard with 400+ students, 20+ teachers, digital classrooms and transport facility.</span><span class="lang-ta" style="display:none;">400+ மாணவர்கள், 20+ ஆசிரியர்கள், டிஜிட்டல் வகுப்பறைகள் மற்றும் போக்குவரத்து வசதியுடன் 1வது முதல் 5வது வகுப்பு வரை தரமான ஆரம்பக் கல்வி வழங்குகிறோம்.</span></p>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Quick Links</span><span class="lang-ta" style="display:none;">விரைவு இணைப்புகள்</span></h4>
+                    <ul>
+                        <li><a href="about.html"><span class="lang-en">About Us</span><span class="lang-ta" style="display:none;">எங்களை பற்றி</span></a></li>
+                        <li><a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a></li>
+                        <li><a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a></li>
+                        <li><a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதிகள்</span></a></li>
+                        <li><a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படத்தொகுப்பு</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></h4>
+                    <ul>
+                        <li><a href="#junior"><span class="lang-en">Class 1 - 2</span><span class="lang-ta" style="display:none;">வகுப்பு 1 - 2</span></a></li>
+                        <li><a href="#middle"><span class="lang-en">Class 3 - 4</span><span class="lang-ta" style="display:none;">வகுப்பு 3 - 4</span></a></li>
+                        <li><a href="#senior"><span class="lang-en">Class 5</span><span class="lang-ta" style="display:none;">வகுப்பு 5</span></a></li>
+                        <li><a href="faculty.html"><span class="lang-en">Our Faculty</span><span class="lang-ta" style="display:none;">எங்கள் ஆசிரியர்கள்</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4><span class="lang-en">Contact Us</span><span class="lang-ta" style="display:none;">எங்களை தொடர்பு கொள்ளுங்கள்</span></h4>
+                    <ul class="footer-contact">
+                        <li><span>📍</span> <span class="lang-en">Tirupattur, Tamil Nadu</span><span class="lang-ta" style="display:none;">திருப்பத்தூர், தமிழ்நாடு</span></li>
+                        <li><span>📞</span> +91 98765 43210</li>
+                        <li><span>✉️</span> info@vasanthschool.edu.in</li>
+                        <li><span>🕐</span> <span class="lang-en">Mon - Sat: 8AM - 4PM</span><span class="lang-ta" style="display:none;">திங்கள் - சனி: காலை 8 - மாலை 4</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><span class="lang-en">© 2026 Vasanth Nursery And Primary School, Tirupattur. All Rights Reserved.</span><span class="lang-ta" style="display:none;">© 2026 வசந்த் நர்சரி மற்றும் ஆரம்பப் பள்ளி, திருப்பத்தூர். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            const enElements = document.querySelectorAll('.lang-en');
+            const taElements = document.querySelectorAll('.lang-ta');
+            const buttons = document.querySelectorAll('.lang-switch button');
+
+            if (lang === 'ta') {
+                enElements.forEach(el => el.style.display = 'none');
+                taElements.forEach(el => el.style.display = 'inline');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+                localStorage.setItem('preferredLanguage', 'ta');
+            } else {
+                enElements.forEach(el => el.style.display = 'inline');
+                taElements.forEach(el => el.style.display = 'none');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+
+        // Check for saved language preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang === 'ta') {
+                switchLanguage('ta');
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
