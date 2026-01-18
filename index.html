@@ -721,12 +721,12 @@
         @media (max-width: 768px) {
             nav { display: none; }
             .mobile-menu { display: block; }
-            .header-top-inner { flex-direction: column; gap: 8px; text-align: center; }
-            .hero { padding-top: 150px; }
+            .header-top { display: none; }
+            .hero { padding-top: 100px; }
             .hero-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 32px; line-height: 1.2; }
-            .hero-slider .slide { height: 280px; }
-            .hero-slider .slide img { object-position: center top; }
+            .hero-slider .slide { height: 250px; }
+            .hero-slider .slide img { object-fit: cover; object-position: center center; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .hero-stat { padding: 15px 10px; }
             .hero-stat h3 { font-size: 24px; }
@@ -738,10 +738,10 @@
             .whatsapp-float svg { width: 26px; height: 26px; }
         }
         @media (max-width: 480px) {
-            .hero { padding-top: 140px; padding-bottom: 40px; }
-            .hero h1 { font-size: 26px; line-height: 1.3; }
+            .hero { padding-top: 90px; padding-bottom: 40px; }
+            .hero h1 { font-size: 24px; line-height: 1.3; }
             .hero p { font-size: 14px; }
-            .hero-slider .slide { height: 220px; }
+            .hero-slider .slide { height: 200px; }
             .hero-slider { border-radius: 12px; }
             .hero-badge { font-size: 12px; padding: 8px 16px; }
             .hero-buttons { flex-direction: column; gap: 10px; }
