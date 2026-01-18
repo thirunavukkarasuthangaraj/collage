@@ -195,6 +195,71 @@
             font-size: 28px;
             cursor: pointer;
             color: #1a365d;
+            z-index: 1001;
+        }
+
+        /* Mobile Sidebar Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 80px 20px 30px;
+            overflow-y: auto;
+        }
+        .mobile-nav.active {
+            right: 0;
+        }
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #1a365d;
+        }
+        .mobile-nav a {
+            display: block;
+            padding: 15px 20px;
+            color: #1a365d;
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .mobile-nav a:hover, .mobile-nav a.active {
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+        }
+        .mobile-nav .btn-apply {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px 20px;
+        }
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* ========== HERO ========== */
@@ -225,13 +290,17 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            width: 100%;
         }
         .hero-slider .slides {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            width: 100%;
         }
         .hero-slider .slide {
+            width: 100%;
             min-width: 100%;
+            flex-shrink: 0;
             height: 450px;
         }
         .hero-slider .slide img {
@@ -239,6 +308,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center center;
+            display: block;
         }
         .placeholder-img {
             width: 100%;
@@ -818,10 +888,24 @@
                     <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
                     <a href="admissions.html" class="btn-apply"><span class="lang-en">Register</span><span class="lang-ta" style="display:none;">பதிவு</span></a>
                 </nav>
-                <button class="mobile-menu">☰</button>
+                <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation Sidebar -->
+    <div class="mobile-nav-overlay" onclick="toggleMobileNav()"></div>
+    <nav class="mobile-nav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+        <a href="index.html" class="active"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
+        <a href="about.html"><span class="lang-en">About</span><span class="lang-ta" style="display:none;">பற்றி</span></a>
+        <a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a>
+        <a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a>
+        <a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதி</span></a>
+        <a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படங்கள்</span></a>
+        <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
+        <a href="admissions.html" class="btn-apply"><span class="lang-en">Register Now</span><span class="lang-ta" style="display:none;">இப்போது பதிவு செய்க</span></a>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1107,6 +1191,15 @@
         // Load saved language preference
         const savedLang = localStorage.getItem('language') || 'en';
         setLanguage(savedLang);
+
+        // Mobile Navigation Toggle
+        function toggleMobileNav() {
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
     </script>
     <script src="js/script.js"></script>
 </body>
