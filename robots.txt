@@ -1,0 +1,21 @@
+# Robots.txt for Vasanth Nursery And Primary School
+# https://vasanthischool.online
+# https://vasanthschool.in
+
+User-agent: *
+Allow: /
+
+# Sitemap locations
+Sitemap: https://vasanthischool.online/sitemap.xml
+Sitemap: https://vasanthschool.in/sitemap.xml
+
+# Allow all crawlers to access all content
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Disallow access to any admin or private directories if they exist
+Disallow: /admin/
+Disallow: /private/
