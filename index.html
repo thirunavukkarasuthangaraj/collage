@@ -899,23 +899,23 @@
                     <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
                     <a href="admissions.html" class="btn-apply"><span class="lang-en">Register</span><span class="lang-ta" style="display:none;">பதிவு</span></a>
                 </nav>
-                <button class="mobile-menu" id="mobileMenuBtn">☰</button>
+                <button class="mobile-menu" onclick="document.getElementById('sideNav').style.transform='translateX(0)';document.getElementById('navOverlay').style.display='block';">☰</button>
             </div>
         </div>
     </header>
 
     <!-- Mobile Navigation Sidebar -->
-    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-    <nav class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" id="mobileNavClose">✕</button>
-        <a href="index.html" class="active"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
-        <a href="about.html"><span class="lang-en">About</span><span class="lang-ta" style="display:none;">பற்றி</span></a>
-        <a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a>
-        <a href="admissions.html"><span class="lang-en">Admissions</span><span class="lang-ta" style="display:none;">சேர்க்கை</span></a>
-        <a href="facilities.html"><span class="lang-en">Facilities</span><span class="lang-ta" style="display:none;">வசதி</span></a>
-        <a href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-ta" style="display:none;">படங்கள்</span></a>
-        <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
-        <a href="admissions.html" class="btn-apply"><span class="lang-en">Register Now</span><span class="lang-ta" style="display:none;">இப்போது பதிவு செய்க</span></a>
+    <div id="navOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9998;" onclick="document.getElementById('sideNav').style.transform='translateX(100%)';this.style.display='none';"></div>
+    <nav id="sideNav" style="position:fixed;top:0;right:0;width:280px;height:100%;background:#fff;z-index:9999;transform:translateX(100%);transition:transform 0.3s;padding:80px 20px 30px;box-shadow:-5px 0 30px rgba(0,0,0,0.2);">
+        <button onclick="document.getElementById('sideNav').style.transform='translateX(100%)';document.getElementById('navOverlay').style.display='none';" style="position:absolute;top:20px;right:20px;background:none;border:none;font-size:28px;cursor:pointer;">✕</button>
+        <a href="index.html" style="display:block;padding:15px 20px;color:#1a365d;font-size:16px;font-weight:500;border-bottom:1px solid #e2e8f0;text-decoration:none;">Home</a>
+        <a href="about.html" style="display:block;padding:15px 20px;color:#1a365d;font-size:16px;font-weight:500;border-bottom:1px solid #e2e8f0;text-decoration:none;">About</a>
+        <a href="academics.html" style="display:block;padding:15px 20px;color:#1a365d;font-size:16px;font-weight:500;border-bottom:1px solid #e2e8f0;text-decoration:none;">Academics</a>
+        <a href="admissions.html" style="display:block;padding:15px 20px;color:#1a365d;font-size:16px;font-weight:500;border-bottom:1px solid #e2e8f0;text-decoration:none;">Admissions</a>
+        <a href="facilities.html" style="display:block;padding:15px 20px;color:#1a365d;font-size:16px;font-weight:500;border-bottom:1px solid #e2e8f0;text-decoration:none;">Facilities</a>
+        <a href="gallery.html" style="display:block;padding:15px 20px;color:#1a365d;font-size:16px;font-weight:500;border-bottom:1px solid #e2e8f0;text-decoration:none;">Gallery</a>
+        <a href="contact.html" style="display:block;padding:15px 20px;color:#1a365d;font-size:16px;font-weight:500;border-bottom:1px solid #e2e8f0;text-decoration:none;">Contact</a>
+        <a href="admissions.html" style="display:block;padding:15px 30px;margin-top:20px;background:#2b6cb0;color:#fff;font-size:16px;font-weight:600;text-align:center;border-radius:8px;text-decoration:none;">Register Now</a>
     </nav>
 
     <!-- Hero Section -->
