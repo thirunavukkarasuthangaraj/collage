@@ -1197,35 +1197,48 @@
         const savedLang = localStorage.getItem('language') || 'en';
         setLanguage(savedLang);
 
-        // Mobile Navigation Toggle
-        (function() {
+    </script>
+
+    <!-- Mobile Navigation Script - Must be at end of body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             var mobileMenuBtn = document.getElementById('mobileMenuBtn');
             var mobileNav = document.getElementById('mobileNav');
             var mobileNavOverlay = document.getElementById('mobileNavOverlay');
             var mobileNavClose = document.getElementById('mobileNavClose');
 
             function openMobileNav() {
-                mobileNav.classList.add('active');
-                mobileNavOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                if (mobileNav && mobileNavOverlay) {
+                    mobileNav.classList.add('active');
+                    mobileNavOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
             }
 
             function closeMobileNav() {
-                mobileNav.classList.remove('active');
-                mobileNavOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+                if (mobileNav && mobileNavOverlay) {
+                    mobileNav.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
 
             if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', openMobileNav);
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openMobileNav();
+                });
             }
             if (mobileNavClose) {
-                mobileNavClose.addEventListener('click', closeMobileNav);
+                mobileNavClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeMobileNav();
+                });
             }
             if (mobileNavOverlay) {
                 mobileNavOverlay.addEventListener('click', closeMobileNav);
             }
-        })();
+        });
     </script>
     <script src="js/script.js"></script>
 </body>
