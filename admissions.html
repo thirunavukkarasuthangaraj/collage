@@ -50,26 +50,29 @@
         .page-header p { opacity: 0.9; font-size: 15px; }
 
         /* Form Section */
-        .form-section { padding: 30px 0; background: #f7fafc; }
+        .form-section { padding: 60px 0; background: #f7fafc; }
         .form-container { max-width: 550px; margin: 0 auto; }
-        .form-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-        .form-box h2 { color: #1a365d; margin-bottom: 5px; font-size: 22px; }
-        .form-box > p { color: #666; font-size: 13px; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #444; }
+        .form-box { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+        .form-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #43e97b); }
+        .form-box h2 { color: #1a365d; margin-bottom: 8px; font-size: 24px; font-weight: 700; }
+        .form-box > p { color: #718096; font-size: 14px; margin-bottom: 25px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #2d3748; }
         .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px; font-size: 14px; border: 1px solid #ddd; border-radius: 6px;
+            width: 100%; padding: 14px 16px; font-size: 15px; border: 2px solid #e2e8f0; border-radius: 10px; transition: all 0.3s; background: #f8fafc;
         }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #667eea; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #667eea; background: white; box-shadow: 0 0 0 4px rgba(102,126,234,0.1); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
-        .btn-submit:hover { opacity: 0.9; }
-        .contact-link { text-align: center; margin-top: 25px; font-size: 14px; color: #666; }
-        .contact-link a { color: #25D366; font-weight: bold; }
+        .btn-submit { width: 100%; padding: 16px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.4); }
+        .contact-link { text-align: center; margin-top: 30px; padding-top: 25px; border-top: 1px solid #e2e8f0; font-size: 15px; color: #4a5568; }
+        .contact-link a { color: #25D366; font-weight: 600; transition: all 0.3s; }
+        .contact-link a:hover { color: #128C7E; }
 
         /* Footer */
-        footer { background: #1a365d; color: white; padding: 25px 0; text-align: center; }
-        footer p { font-size: 14px; opacity: 0.9; }
+        footer { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); color: white; padding: 30px 0; text-align: center; position: relative; }
+        footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #43e97b); }
+        footer p { font-size: 14px; color: #94a3b8; }
 
         /* WhatsApp Float */
         .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 999; }
@@ -80,9 +83,9 @@
 
         @media (max-width: 768px) {
             nav { display: none; }
-            .header-top-inner { flex-direction: column; gap: 8px; text-align: center; }
+            .header-top { display: none; }
             .form-row { grid-template-columns: 1fr; }
-            .page-header { padding: 120px 0 50px; }
+            .page-header { padding: 100px 0 50px; }
             .page-header h1 { font-size: 28px; }
         }
     </style>
@@ -93,7 +96,7 @@
     <header>
         <div class="header-top">
             <div class="container header-top-inner">
-                <span>📞 +91 98765 43210 | ✉️ info@vasanthschool.edu.in</span>
+                <span>📞 +91 81440 02155 | ✉️ info@vasanthschool.edu.in</span>
                 <div class="lang-switch">
                     <button class="active" onclick="switchLang('en')">English</button>
                     <button onclick="switchLang('ta')">தமிழ்</button>
@@ -160,7 +163,7 @@
         <div class="container">
             <div class="form-container">
                 <div class="form-box" id="form">
-                    <h2><span class="lang-en">Enquiry detailsForm</span><span class="lang-ta" style="display:none;">பதிவு படிவம்</span></h2>
+                    <h2><span class="lang-en">Enquiry Form</span><span class="lang-ta" style="display:none;">பதிவு படிவம்</span></h2>
                     <p><span class="lang-en">Fill the form below and we will contact you.</span><span class="lang-ta" style="display:none;">கீழே உள்ள படிவத்தை நிரப்பவும், நாங்கள் உங்களை தொடர்பு கொள்வோம்.</span></p>
 
                     <form>
@@ -176,21 +179,21 @@
                             <div class="form-group">
                                 <label><span class="lang-en">Gender *</span><span class="lang-ta" style="display:none;">பாலினம் *</span></label>
                                 <select required>
-                                    <option value=""><span class="lang-en">Select</span><span class="lang-ta" style="display:none;">தேர்வு செய்</span></option>
-                                    <option><span class="lang-en">Male</span><span class="lang-ta" style="display:none;">ஆண்</span></option>
-                                    <option><span class="lang-en">Female</span><span class="lang-ta" style="display:none;">பெண்</span></option>
+                                    <option value="">Select / தேர்வு</option>
+                                    <option value="male">Male / ஆண்</option>
+                                    <option value="female">Female / பெண்</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label><span class="lang-en">Class Applying For *</span><span class="lang-ta" style="display:none;">விண்ணப்பிக்கும் வகுப்பு *</span></label>
                             <select required>
-                                <option value=""><span class="lang-en">Select Class</span><span class="lang-ta" style="display:none;">வகுப்பு தேர்வு செய்</span></option>
-                                <option><span class="lang-en">Class 1</span><span class="lang-ta" style="display:none;">வகுப்பு 1</span></option>
-                                <option><span class="lang-en">Class 2</span><span class="lang-ta" style="display:none;">வகுப்பு 2</span></option>
-                                <option><span class="lang-en">Class 3</span><span class="lang-ta" style="display:none;">வகுப்பு 3</span></option>
-                                <option><span class="lang-en">Class 4</span><span class="lang-ta" style="display:none;">வகுப்பு 4</span></option>
-                                <option><span class="lang-en">Class 5</span><span class="lang-ta" style="display:none;">வகுப்பு 5</span></option>
+                                <option value="">Select Class / வகுப்பு தேர்வு</option>
+                                <option value="1">Class 1 / வகுப்பு 1</option>
+                                <option value="2">Class 2 / வகுப்பு 2</option>
+                                <option value="3">Class 3 / வகுப்பு 3</option>
+                                <option value="4">Class 4 / வகுப்பு 4</option>
+                                <option value="5">Class 5 / வகுப்பு 5</option>
                             </select>
                         </div>
                         <div class="form-row">
@@ -205,7 +208,7 @@
                         </div>
                         <div class="form-group">
                             <label><span class="lang-en">Mobile Number *</span><span class="lang-ta" style="display:none;">கைபேசி எண் *</span></label>
-                            <input type="tel" required placeholder="+91 98765 43210">
+                            <input type="tel" required placeholder="+91 81440 02155">
                         </div>
                         <button type="submit" class="btn-submit"><span class="lang-en">Apply for Admission</span><span class="lang-ta" style="display:none;">இப்போது பதிவு செய்</span></button>
                     </form>
