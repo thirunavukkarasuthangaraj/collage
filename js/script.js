@@ -524,6 +524,46 @@ document.addEventListener('DOMContentLoaded', function() {
 document.body.style.opacity = '0';
 document.body.style.transition = 'opacity 0.3s ease';
 
+// ===== Global Language Switcher (for mobile sidebar buttons) =====
+window.switchLanguage = function(lang) {
+    // Update localStorage
+    localStorage.setItem('language', lang);
+
+    // Update document lang
+    document.documentElement.lang = lang;
+
+    // Update .lang-btn buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // Update .lang-switch buttons
+    document.querySelectorAll('.lang-switch button').forEach((btn, index) => {
+        btn.classList.toggle('active', (index === 0 && lang === 'en') || (index === 1 && lang === 'ta'));
+    });
+
+    // Support for .lang-en / .lang-ta span system
+    document.querySelectorAll('.lang-en').forEach(el => {
+        el.style.display = lang === 'en' ? 'inline' : 'none';
+    });
+    document.querySelectorAll('.lang-ta').forEach(el => {
+        el.style.display = lang === 'ta' ? 'inline' : 'none';
+    });
+
+    // Update mobile sidebar language buttons styling
+    const mobileLangBtns = document.querySelectorAll('#mobileSidebar button[onclick*="switchLanguage"]');
+    mobileLangBtns.forEach(btn => {
+        const isEnglish = btn.onclick.toString().includes("'en'");
+        if ((isEnglish && lang === 'en') || (!isEnglish && lang === 'ta')) {
+            btn.style.background = '#2b6cb0';
+            btn.style.color = '#fff';
+        } else {
+            btn.style.background = '#e2e8f0';
+            btn.style.color = '#1a365d';
+        }
+    });
+};
+
 // ===== Features Slider =====
 let currentSlide = 0;
 const totalSlides = 4;
