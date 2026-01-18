@@ -392,12 +392,18 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,255,255,0.2);
-            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            padding: 12px 24px;
             border-radius: 50px;
             font-size: 14px;
+            font-weight: 600;
             margin-bottom: 25px;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(238, 90, 36, 0.6); }
         }
         .hero h1 {
             font-size: 52px;
