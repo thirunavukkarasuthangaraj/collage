@@ -893,15 +893,15 @@
                     <a href="contact.html"><span class="lang-en">Contact</span><span class="lang-ta" style="display:none;">தொடர்பு</span></a>
                     <a href="admissions.html" class="btn-apply"><span class="lang-en">Register</span><span class="lang-ta" style="display:none;">பதிவு</span></a>
                 </nav>
-                <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
+                <button class="mobile-menu" id="mobileMenuBtn">☰</button>
             </div>
         </div>
     </header>
 
     <!-- Mobile Navigation Sidebar -->
-    <div class="mobile-nav-overlay" onclick="toggleMobileNav()"></div>
-    <nav class="mobile-nav">
-        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">✕</button>
         <a href="index.html" class="active"><span class="lang-en">Home</span><span class="lang-ta" style="display:none;">முகப்பு</span></a>
         <a href="about.html"><span class="lang-en">About</span><span class="lang-ta" style="display:none;">பற்றி</span></a>
         <a href="academics.html"><span class="lang-en">Academics</span><span class="lang-ta" style="display:none;">கல்வி</span></a>
@@ -1198,17 +1198,34 @@
         setLanguage(savedLang);
 
         // Mobile Navigation Toggle
-        function toggleMobileNav() {
-            var mobileNav = document.querySelector('.mobile-nav');
-            var overlay = document.querySelector('.mobile-nav-overlay');
-            if (mobileNav && overlay) {
-                mobileNav.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        (function() {
+            var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            var mobileNav = document.getElementById('mobileNav');
+            var mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            var mobileNavClose = document.getElementById('mobileNavClose');
+
+            function openMobileNav() {
+                mobileNav.classList.add('active');
+                mobileNavOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        }
-        // Make function globally available
-        window.toggleMobileNav = toggleMobileNav;
+
+            function closeMobileNav() {
+                mobileNav.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', openMobileNav);
+            }
+            if (mobileNavClose) {
+                mobileNavClose.addEventListener('click', closeMobileNav);
+            }
+            if (mobileNavOverlay) {
+                mobileNavOverlay.addEventListener('click', closeMobileNav);
+            }
+        })();
     </script>
     <script src="js/script.js"></script>
 </body>
