@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd SEO sitemap, robots.txt, and meta tags for search visibility\n\n- Add sitemap.xml with all pages for vasanthischool.online and vasanthschool.in\n- Add robots.txt with crawler directives\n- Add SEO meta tags \\(keywords, description, Open Graph\\) to all 9 pages\n- Add Schema.org structured data for educational organization\n- Update titles to include \"Vasanth School\" for better search ranking\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix mobile view - improve hero slider and WhatsApp button positioning\n\n- Add object-position: center top for mobile slider images\n- Make WhatsApp button smaller on mobile \\(50px -> 45px\\)\n- Add 480px breakpoint for very small screens \\(iPhone SE\\)\n- Reduce hero text size on small screens\n- Stack hero buttons vertically on mobile\n- Improve overall mobile spacing\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)"
+    ]
+  }
+}
