@@ -1,10 +1,214 @@
 /* ===================================================
-   VASANTH SCHOOL - CLEAN MINIMAL DESIGN
-   Ultra Clean, Professional, Modern
+   VASANTH SCHOOL - ELITE PREMIUM DESIGN
+   Modern, Professional, Animated
    =================================================== */
 
 /* ===== Google Fonts ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');
+
+/* ===== ELITE ANIMATIONS ===== */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(102,126,234,0.4); }
+    50% { box-shadow: 0 0 40px rgba(102,126,234,0.8); }
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4); }
+    50% { transform: scale(1.02); box-shadow: 0 6px 25px rgba(238, 90, 36, 0.6); }
+}
+
+/* Animation Classes */
+.animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+.animate-slideInLeft { animation: slideInLeft 0.8s ease forwards; }
+.animate-slideInRight { animation: slideInRight 0.8s ease forwards; }
+.animate-scaleIn { animation: scaleIn 0.6s ease forwards; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+}
+
+/* Elite Section Label */
+.section-label {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+}
+
+/* Elite Cards */
+.elite-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(102,126,234,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.elite-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    transform: scaleX(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elite-card:hover::before {
+    transform: scaleX(1);
+}
+
+.elite-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(102,126,234,0.25);
+}
+
+/* Elite Button */
+.elite-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.elite-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.elite-btn:hover::before {
+    left: 100%;
+}
+
+.elite-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102,126,234,0.5);
+}
+
+/* Elite Footer */
+.elite-footer {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+}
+
+.elite-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #43e97b);
+}
+
+/* Floating Shapes */
+.floating-shape {
+    position: absolute;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: float 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Hero Gradient Background */
+.hero-gradient {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #6B8DD6, #8E54E9);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+/* CTA Gradient Background */
+.cta-gradient {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #6B8DD6, #8E54E9);
+    background-size: 400% 400%;
+    animation: gradient-shift 10s ease infinite;
+}
 
 /* ===== CSS Variables ===== */
 :root {
