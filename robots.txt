@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vasanthischool.online/sitemap.xml
+Sitemap: https://vasanthschool.online/sitemap.xml
 Sitemap: https://vasantschool.in/sitemap.xml
