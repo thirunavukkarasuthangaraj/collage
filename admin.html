@@ -612,41 +612,25 @@
             document.getElementById('admissionsNoData').style.display = 'none';
             document.getElementById('contactsNoData').style.display = 'none';
 
-            // Use JSONP-style callback for cross-origin
-            const callbackName = 'handleData_' + Date.now();
-            window[callbackName] = function(data) {
-                admissionsData = data.admissions || [];
-                contactsData = data.contacts || [];
-                displayAdmissions(admissionsData);
-                displayContacts(contactsData);
-                updateStats();
-                delete window[callbackName];
-            };
-
-            const script = document.createElement('script');
-            script.src = GOOGLE_SHEET_URL + '?callback=' + callbackName;
-            script.onerror = function() {
-                // Fallback to fetch
-                fetch(GOOGLE_SHEET_URL)
-                    .then(response => response.json())
-                    .then(data => {
-                        admissionsData = data.admissions || [];
-                        contactsData = data.contacts || [];
-                        displayAdmissions(admissionsData);
-                        displayContacts(contactsData);
-                        updateStats();
-                    })
-                    .catch(error => {
-                        console.error('Error loading data:', error);
-                        document.getElementById('admissionsLoading').style.display = 'none';
-                        document.getElementById('contactsLoading').style.display = 'none';
-                        document.getElementById('admissionsNoData').innerHTML = 'Error loading data. Try opening admin.html from a web server.';
-                        document.getElementById('contactsNoData').innerHTML = 'Error loading data. Try opening admin.html from a web server.';
-                        document.getElementById('admissionsNoData').style.display = 'block';
-                        document.getElementById('contactsNoData').style.display = 'block';
-                    });
-            };
-            document.body.appendChild(script);
+            fetch(GOOGLE_SHEET_URL)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data received:', data);
+                    admissionsData = data.admissions || [];
+                    contactsData = data.contacts || [];
+                    displayAdmissions(admissionsData);
+                    displayContacts(contactsData);
+                    updateStats();
+                })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+                    document.getElementById('admissionsLoading').style.display = 'none';
+                    document.getElementById('contactsLoading').style.display = 'none';
+                    document.getElementById('admissionsNoData').innerHTML = 'Error: ' + error.message;
+                    document.getElementById('contactsNoData').innerHTML = 'Error: ' + error.message;
+                    document.getElementById('admissionsNoData').style.display = 'block';
+                    document.getElementById('contactsNoData').style.display = 'block';
+                });
         }
 
         function displayAdmissions(data) {
