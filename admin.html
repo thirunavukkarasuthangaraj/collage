@@ -652,7 +652,7 @@
                     <td>${row.timestamp || '-'}</td>
                     <td><strong>${row.studentName || '-'}</strong><br><small style="color:#718096;">DOB: ${row.dob || '-'} | ${row.gender || '-'}</small></td>
                     <td>${row.classApplying || '-'}</td>
-                    <td><a href="tel:${row.mobile}" class="btn-call">Call ${row.mobile || ''}</a></td>
+                    <td><a href="tel:${row.mobile || ''}" class="btn-call">Call ${row.mobile || ''}</a></td>
                     <td>${row.fatherName || '-'}<br><small style="color:#718096;">${row.motherName || '-'}</small></td>
                     <td>
                         <select class="status-select" onchange="updateStatus('admission', ${row.rowNum}, this.value)" data-row="${row.rowNum}">
@@ -668,7 +668,7 @@
                         <button class="btn-save-note" onclick="saveNote('admission', ${row.rowNum})">Save</button>
                     </td>
                     <td>
-                        <a href="https://wa.me/91${(row.mobile || '').replace(/\D/g, '')}" target="_blank" class="btn-call" style="background:#25D366;">WhatsApp</a>
+                        <a href="https://wa.me/91${String(row.mobile || '').replace(/\D/g, '')}" target="_blank" class="btn-call" style="background:#25D366;">WhatsApp</a>
                     </td>
                 `;
                 tbody.appendChild(tr);
