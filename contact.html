@@ -250,38 +250,39 @@
 
                 <div class="contact-form">
                     <h3><span class="lang-en">Send Us a Message</span><span class="lang-ta" style="display:none;">செய்தி அனுப்புங்கள்</span></h3>
-                    <form action="#" method="POST">
+                    <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
                                 <label><span class="lang-en">Your Name *</span><span class="lang-ta" style="display:none;">உங்கள் பெயர் *</span></label>
-                                <input type="text" required placeholder="Enter your name">
+                                <input type="text" name="name" id="contactName" required placeholder="Enter your name">
                             </div>
                             <div class="form-group">
                                 <label><span class="lang-en">Email Address *</span><span class="lang-ta" style="display:none;">மின்னஞ்சல் முகவரி *</span></label>
-                                <input type="email" required placeholder="your@email.com">
+                                <input type="email" name="email" id="contactEmail" required placeholder="your@email.com">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label><span class="lang-en">Phone Number</span><span class="lang-ta" style="display:none;">தொலைபேசி எண்</span></label>
-                                <input type="tel" placeholder="04179 225 167 | +91 81440 02155">
+                                <input type="tel" name="phone" id="contactPhone" placeholder="04179 225 167 | +91 81440 02155">
                             </div>
                             <div class="form-group">
                                 <label><span class="lang-en">Subject *</span><span class="lang-ta" style="display:none;">தலைப்பு *</span></label>
-                                <select required>
+                                <select name="subject" id="contactSubject" required>
                                     <option value="">Select Subject</option>
-                                    <option value="admission">Admission Enquiry</option>
-                                    <option value="general">General Enquiry</option>
-                                    <option value="feedback">Feedback</option>
-                                    <option value="visit">Campus Visit Request</option>
+                                    <option value="Admission Enquiry">Admission Enquiry</option>
+                                    <option value="General Enquiry">General Enquiry</option>
+                                    <option value="Feedback">Feedback</option>
+                                    <option value="Campus Visit Request">Campus Visit Request</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label><span class="lang-en">Your Message *</span><span class="lang-ta" style="display:none;">உங்கள் செய்தி *</span></label>
-                            <textarea required placeholder="Write your message here..."></textarea>
+                            <textarea name="message" id="contactMessage" required placeholder="Write your message here..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;"><span class="lang-en">Send Message</span><span class="lang-ta" style="display:none;">செய்தி அனுப்பு</span></button>
+                        <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="width: 100%;"><span class="lang-en">Send Message</span><span class="lang-ta" style="display:none;">செய்தி அனுப்பு</span></button>
+                        <div id="contactFormMessage" style="margin-top:15px;padding:15px;border-radius:8px;display:none;text-align:center;font-weight:600;"></div>
                     </form>
                 </div>
             </div>
@@ -381,6 +382,66 @@
             if (savedLang) {
                 switchLanguage(savedLang);
             }
+        });
+
+        // ========== GOOGLE SHEETS FORM SUBMISSION ==========
+        // Replace this URL with your Google Apps Script Web App URL
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzgssAplEP8MxEWwt67pY4Jy1OXjNJECkMyXyzQxnd1YhCWrJyIBv3ASzjFZVA9lgXc/exec';
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const formMessage = document.getElementById('contactFormMessage');
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending... / அனுப்புகிறது...';
+
+            // Collect form data
+            const formData = {
+                formType: 'contact',
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                phone: document.getElementById('contactPhone').value,
+                subject: document.getElementById('contactSubject').value,
+                message: document.getElementById('contactMessage').value
+            };
+
+            // Send to Google Sheets
+            fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                // Show success message
+                formMessage.style.display = 'block';
+                formMessage.style.background = '#c6f6d5';
+                formMessage.style.color = '#22543d';
+                formMessage.innerHTML = '✅ Message sent successfully! We will contact you soon.<br>செய்தி வெற்றிகரமாக அனுப்பப்பட்டது!';
+
+                // Reset form
+                document.getElementById('contactForm').reset();
+
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span class="lang-en">Send Message</span><span class="lang-ta" style="display:none;">செய்தி அனுப்பு</span>';
+            })
+            .catch((error) => {
+                // Show error message
+                formMessage.style.display = 'block';
+                formMessage.style.background = '#fed7d7';
+                formMessage.style.color = '#c53030';
+                formMessage.innerHTML = '❌ Error sending message. Please try again or call us.<br>செய்தி அனுப்புவதில் பிழை.';
+
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span class="lang-en">Send Message</span><span class="lang-ta" style="display:none;">செய்தி அனுப்பு</span>';
+            });
         });
     </script>
 </body>

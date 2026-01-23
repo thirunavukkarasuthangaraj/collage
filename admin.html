@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Vasanth School</title>
+    <link rel="icon" href="logo/logo.png" type="image/png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .login-box {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+        .login-box img {
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .login-box h1 {
+            color: #1a365d;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .login-box p {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
+        }
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
+        }
+        .error-msg {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Admin Dashboard */
+        .dashboard {
+            display: none;
+            min-height: 100vh;
+            background: #f7fafc;
+        }
+        .dashboard-header {
+            background: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .dashboard-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .dashboard-header .logo img {
+            height: 50px;
+        }
+        .dashboard-header .logo h2 {
+            color: #1a365d;
+            font-size: 20px;
+        }
+        .btn-logout {
+            padding: 10px 25px;
+            background: #e53e3e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-logout:hover {
+            background: #c53030;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 5px;
+            padding: 20px 30px;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .tab-btn {
+            padding: 12px 30px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover {
+            background: #e2e8f0;
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .stat-card h3 {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a365d;
+        }
+        .stat-card:nth-child(1) .number { color: #667eea; }
+        .stat-card:nth-child(2) .number { color: #38a169; }
+        .stat-card:nth-child(3) .number { color: #ed8936; }
+        .stat-card:nth-child(4) .number { color: #e53e3e; }
+        .stat-card:nth-child(5) .number { color: #3182ce; }
+
+        /* Data Table */
+        .table-container {
+            padding: 0 30px 30px;
+        }
+        .table-box {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .table-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .table-header h3 {
+            color: #1a365d;
+            font-size: 20px;
+        }
+        .table-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .btn-refresh {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-refresh:hover {
+            background: #5a67d8;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+        th, td {
+            padding: 15px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        td {
+            color: #2d3748;
+            font-size: 14px;
+        }
+        tr:hover {
+            background: #f8fafc;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #718096;
+        }
+        .no-data {
+            text-align: center;
+            padding: 50px;
+            color: #a0aec0;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-contacted {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-followup {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .status-enrolled {
+            background: #c7d2fe;
+            color: #3730a3;
+        }
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Status Select */
+        .status-select {
+            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            background: white;
+            min-width: 130px;
+        }
+        .status-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Notes */
+        .notes-input {
+            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 13px;
+            width: 150px;
+        }
+        .notes-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn-save-note {
+            padding: 8px 12px;
+            background: #38a169;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .btn-save-note:hover {
+            background: #2f855a;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Call Button */
+        .btn-call {
+            padding: 6px 12px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-call:hover {
+            background: #128C7E;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 15px 25px;
+            background: #38a169;
+            color: white;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-wrap: wrap;
+                padding: 15px;
+            }
+            .tab-btn {
+                flex: 1;
+                min-width: 120px;
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+            .stats {
+                padding: 15px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .table-container {
+                padding: 0 15px 15px;
+            }
+            .table-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            th, td {
+                padding: 12px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <img src="logo/logo.png" alt="Vasanth School">
+            <h1>Admin Panel</h1>
+            <p>Login to manage enquiries</p>
+            <div class="error-msg" id="loginError">Invalid username or password</div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn-login">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <div class="dashboard-header">
+            <div class="logo">
+                <img src="logo/logo.png" alt="Vasanth School">
+                <h2>Admin Dashboard</h2>
+            </div>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('admissions')">Admissions</button>
+            <button class="tab-btn" onclick="switchTab('contacts')">Contact Messages</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Admissions</h3>
+                <div class="number" id="totalAdmissions">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Pending</h3>
+                <div class="number" id="totalPending">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Contacted</h3>
+                <div class="number" id="totalContacted">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Enrolled</h3>
+                <div class="number" id="totalEnrolled">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Messages</h3>
+                <div class="number" id="totalContacts">0</div>
+            </div>
+        </div>
+
+        <!-- Admissions Table -->
+        <div class="tab-content active" id="admissions-tab">
+            <div class="table-container">
+                <div class="table-box">
+                    <div class="table-header">
+                        <h3>Admission Enquiries</h3>
+                        <div class="table-actions">
+                            <select class="filter-select" id="statusFilter" onchange="filterByStatus()">
+                                <option value="all">All Status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Contacted">Contacted</option>
+                                <option value="Follow-up">Follow-up</option>
+                                <option value="Enrolled">Enrolled</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                            <button class="btn-refresh" onclick="loadData()">Refresh</button>
+                        </div>
+                    </div>
+                    <div id="admissionsLoading" class="loading">Loading data...</div>
+                    <div id="admissionsNoData" class="no-data" style="display:none;">No admission enquiries yet</div>
+                    <div class="table-wrapper">
+                        <table id="admissionsTable" style="display:none;">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Student Name</th>
+                                    <th>Class</th>
+                                    <th>Mobile</th>
+                                    <th>Father</th>
+                                    <th>Status</th>
+                                    <th>Notes</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admissionsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacts Table -->
+        <div class="tab-content" id="contacts-tab">
+            <div class="table-container">
+                <div class="table-box">
+                    <div class="table-header">
+                        <h3>Contact Messages</h3>
+                        <button class="btn-refresh" onclick="loadData()">Refresh</button>
+                    </div>
+                    <div id="contactsLoading" class="loading">Loading data...</div>
+                    <div id="contactsNoData" class="no-data" style="display:none;">No contact messages yet</div>
+                    <div class="table-wrapper">
+                        <table id="contactsTable" style="display:none;">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contactsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Status updated successfully!</div>
+
+    <script>
+        // ========== CONFIGURATION ==========
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzgssAplEP8MxEWwt67pY4Jy1OXjNJECkMyXyzQxnd1YhCWrJyIBv3ASzjFZVA9lgXc/exec';
+
+        // Admin credentials (change these!)
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = 'vasanth2026';
+
+        // Store data globally
+        let admissionsData = [];
+        let contactsData = [];
+
+        // ========== LOGIN FUNCTIONS ==========
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                showDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            loadData();
+        }
+
+        if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+            showDashboard();
+        }
+
+        // ========== TAB SWITCHING ==========
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tab + '-tab').classList.add('active');
+        }
+
+        // ========== LOAD DATA ==========
+        function loadData() {
+            document.getElementById('admissionsLoading').style.display = 'block';
+            document.getElementById('contactsLoading').style.display = 'block';
+            document.getElementById('admissionsTable').style.display = 'none';
+            document.getElementById('contactsTable').style.display = 'none';
+            document.getElementById('admissionsNoData').style.display = 'none';
+            document.getElementById('contactsNoData').style.display = 'none';
+
+            // Use JSONP-style callback for cross-origin
+            const callbackName = 'handleData_' + Date.now();
+            window[callbackName] = function(data) {
+                admissionsData = data.admissions || [];
+                contactsData = data.contacts || [];
+                displayAdmissions(admissionsData);
+                displayContacts(contactsData);
+                updateStats();
+                delete window[callbackName];
+            };
+
+            const script = document.createElement('script');
+            script.src = GOOGLE_SHEET_URL + '?callback=' + callbackName;
+            script.onerror = function() {
+                // Fallback to fetch
+                fetch(GOOGLE_SHEET_URL)
+                    .then(response => response.json())
+                    .then(data => {
+                        admissionsData = data.admissions || [];
+                        contactsData = data.contacts || [];
+                        displayAdmissions(admissionsData);
+                        displayContacts(contactsData);
+                        updateStats();
+                    })
+                    .catch(error => {
+                        console.error('Error loading data:', error);
+                        document.getElementById('admissionsLoading').style.display = 'none';
+                        document.getElementById('contactsLoading').style.display = 'none';
+                        document.getElementById('admissionsNoData').innerHTML = 'Error loading data. Try opening admin.html from a web server.';
+                        document.getElementById('contactsNoData').innerHTML = 'Error loading data. Try opening admin.html from a web server.';
+                        document.getElementById('admissionsNoData').style.display = 'block';
+                        document.getElementById('contactsNoData').style.display = 'block';
+                    });
+            };
+            document.body.appendChild(script);
+        }
+
+        function displayAdmissions(data) {
+            document.getElementById('admissionsLoading').style.display = 'none';
+
+            if (data.length === 0) {
+                document.getElementById('admissionsNoData').style.display = 'block';
+                return;
+            }
+
+            const tbody = document.getElementById('admissionsBody');
+            tbody.innerHTML = '';
+
+            data.forEach((row, index) => {
+                const status = row.status || 'Pending';
+                const notes = row.notes || '';
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.timestamp || '-'}</td>
+                    <td><strong>${row.studentName || '-'}</strong><br><small style="color:#718096;">DOB: ${row.dob || '-'} | ${row.gender || '-'}</small></td>
+                    <td>${row.classApplying || '-'}</td>
+                    <td><a href="tel:${row.mobile}" class="btn-call">Call ${row.mobile || ''}</a></td>
+                    <td>${row.fatherName || '-'}<br><small style="color:#718096;">${row.motherName || '-'}</small></td>
+                    <td>
+                        <select class="status-select" onchange="updateStatus('admission', ${row.rowNum}, this.value)" data-row="${row.rowNum}">
+                            <option value="Pending" ${status === 'Pending' ? 'selected' : ''}>Pending</option>
+                            <option value="Contacted" ${status === 'Contacted' ? 'selected' : ''}>Contacted</option>
+                            <option value="Follow-up" ${status === 'Follow-up' ? 'selected' : ''}>Follow-up</option>
+                            <option value="Enrolled" ${status === 'Enrolled' ? 'selected' : ''}>Enrolled</option>
+                            <option value="Rejected" ${status === 'Rejected' ? 'selected' : ''}>Rejected</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="notes-input" value="${notes}" placeholder="Add notes..." id="note-${row.rowNum}">
+                        <button class="btn-save-note" onclick="saveNote('admission', ${row.rowNum})">Save</button>
+                    </td>
+                    <td>
+                        <a href="https://wa.me/91${(row.mobile || '').replace(/\D/g, '')}" target="_blank" class="btn-call" style="background:#25D366;">WhatsApp</a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('admissionsTable').style.display = 'table';
+        }
+
+        function displayContacts(data) {
+            document.getElementById('contactsLoading').style.display = 'none';
+
+            if (data.length === 0) {
+                document.getElementById('contactsNoData').style.display = 'block';
+                return;
+            }
+
+            const tbody = document.getElementById('contactsBody');
+            tbody.innerHTML = '';
+
+            data.forEach((row) => {
+                const status = row.status || 'Pending';
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.timestamp || '-'}</td>
+                    <td>${row.name || '-'}</td>
+                    <td>${row.email || '-'}</td>
+                    <td><a href="tel:${row.phone}" class="btn-call">Call</a></td>
+                    <td>${row.subject || '-'}</td>
+                    <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;">${row.message || '-'}</td>
+                    <td>
+                        <select class="status-select" onchange="updateStatus('contact', ${row.rowNum}, this.value)">
+                            <option value="Pending" ${status === 'Pending' ? 'selected' : ''}>Pending</option>
+                            <option value="Replied" ${status === 'Replied' ? 'selected' : ''}>Replied</option>
+                            <option value="Resolved" ${status === 'Resolved' ? 'selected' : ''}>Resolved</option>
+                        </select>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('contactsTable').style.display = 'table';
+        }
+
+        function updateStats() {
+            const pending = admissionsData.filter(a => !a.status || a.status === 'Pending').length;
+            const contacted = admissionsData.filter(a => a.status === 'Contacted' || a.status === 'Follow-up').length;
+            const enrolled = admissionsData.filter(a => a.status === 'Enrolled').length;
+
+            document.getElementById('totalAdmissions').textContent = admissionsData.length;
+            document.getElementById('totalPending').textContent = pending;
+            document.getElementById('totalContacted').textContent = contacted;
+            document.getElementById('totalEnrolled').textContent = enrolled;
+            document.getElementById('totalContacts').textContent = contactsData.length;
+        }
+
+        // ========== FILTER ==========
+        function filterByStatus() {
+            const filter = document.getElementById('statusFilter').value;
+            if (filter === 'all') {
+                displayAdmissions(admissionsData);
+            } else {
+                const filtered = admissionsData.filter(a => (a.status || 'Pending') === filter);
+                displayAdmissions(filtered);
+            }
+        }
+
+        // ========== UPDATE STATUS ==========
+        function updateStatus(type, rowNum, status) {
+            fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: 'updateStatus',
+                    type: type,
+                    rowNum: rowNum,
+                    status: status
+                })
+            }).then(() => {
+                showToast('Status updated!');
+                // Update local data
+                if (type === 'admission') {
+                    const item = admissionsData.find(a => a.rowNum === rowNum);
+                    if (item) item.status = status;
+                }
+                updateStats();
+            });
+        }
+
+        // ========== SAVE NOTE ==========
+        function saveNote(type, rowNum) {
+            const note = document.getElementById('note-' + rowNum).value;
+            fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: 'updateNote',
+                    type: type,
+                    rowNum: rowNum,
+                    note: note
+                })
+            }).then(() => {
+                showToast('Note saved!');
+            });
+        }
+
+        // ========== TOAST ==========
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
