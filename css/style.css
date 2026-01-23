@@ -3,6 +3,16 @@
    Modern, Professional, Animated
    =================================================== */
 
+/* Site Blank/Hide - Add class "site-hidden" to body to hide entire site */
+body.site-hidden {
+    visibility: hidden !important;
+}
+
+/* Or use this to show blank white page */
+body.site-blank * {
+    display: none !important;
+}
+
 /* ===== Google Fonts ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');
 
