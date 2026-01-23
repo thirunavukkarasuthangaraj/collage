@@ -647,9 +647,19 @@
             data.forEach((row, index) => {
                 const status = row.status || 'Pending';
                 const notes = row.notes || '';
+                // Format date
+                let formattedDate = '-';
+                if (row.timestamp) {
+                    const d = new Date(row.timestamp);
+                    if (!isNaN(d)) {
+                        formattedDate = d.toLocaleDateString('en-IN', {day: '2-digit', month: '2-digit', year: 'numeric'}) + ' ' + d.toLocaleTimeString('en-IN', {hour: '2-digit', minute: '2-digit', hour12: true});
+                    } else {
+                        formattedDate = row.timestamp;
+                    }
+                }
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${row.timestamp || '-'}</td>
+                    <td>${formattedDate}</td>
                     <td><strong>${row.studentName || '-'}</strong><br><small style="color:#718096;">DOB: ${row.dob || '-'} | ${row.gender || '-'}</small></td>
                     <td>${row.classApplying || '-'}</td>
                     <td><a href="tel:${row.mobile || ''}" class="btn-call">Call ${row.mobile || ''}</a></td>
@@ -690,9 +700,19 @@
 
             data.forEach((row) => {
                 const status = row.status || 'Pending';
+                // Format date
+                let formattedDate = '-';
+                if (row.timestamp) {
+                    const d = new Date(row.timestamp);
+                    if (!isNaN(d)) {
+                        formattedDate = d.toLocaleDateString('en-IN', {day: '2-digit', month: '2-digit', year: 'numeric'}) + ' ' + d.toLocaleTimeString('en-IN', {hour: '2-digit', minute: '2-digit', hour12: true});
+                    } else {
+                        formattedDate = row.timestamp;
+                    }
+                }
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${row.timestamp || '-'}</td>
+                    <td>${formattedDate}</td>
                     <td>${row.name || '-'}</td>
                     <td>${row.email || '-'}</td>
                     <td><a href="tel:${row.phone}" class="btn-call">Call</a></td>
