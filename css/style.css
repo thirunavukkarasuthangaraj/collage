@@ -3,13 +3,8 @@
    Modern, Professional, Animated
    =================================================== */
 
-/* Site Blank/Hide - Add class "site-hidden" to body to hide entire site */
-body.site-hidden {
-    visibility: hidden !important;
-}
-
-/* Or use this to show blank white page */
-body.site-blank * {
+/* Site Blank/Hide - Comment out to show site */
+body * {
     display: none !important;
 }
 
