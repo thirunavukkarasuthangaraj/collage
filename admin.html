@@ -555,7 +555,7 @@
 
     <script>
         // ========== CONFIGURATION ==========
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxeapmPIEIacb6EY9SwecUITwEdCcyNX3SxibxgN0SrN9tH5cy6HFZD9O5pwgM7dFMy9w/exec';
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbx7PA1pxPu6en7eAhPklkuaR2gy_q2SQgNNgTEjkuOOUCOQl6YhcJxnBXXUpcgaVIpGYA/exec';
 
         // Admin credentials (change these!)
         const ADMIN_USERNAME = 'admin';
@@ -657,10 +657,20 @@
                         formattedDate = row.timestamp;
                     }
                 }
+                // Format DOB
+                let formattedDob = '-';
+                if (row.dob) {
+                    const dob = new Date(row.dob);
+                    if (!isNaN(dob)) {
+                        formattedDob = dob.toLocaleDateString('en-IN', {day: '2-digit', month: '2-digit', year: 'numeric'});
+                    } else {
+                        formattedDob = row.dob;
+                    }
+                }
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${formattedDate}</td>
-                    <td><strong>${row.studentName || '-'}</strong><br><small style="color:#718096;">DOB: ${row.dob || '-'} | ${row.gender || '-'}</small></td>
+                    <td><strong>${row.studentName || '-'}</strong><br><small style="color:#718096;">DOB: ${formattedDob} | ${row.gender || '-'}</small></td>
                     <td>${row.classApplying || '-'}</td>
                     <td><a href="tel:${row.mobile || ''}" class="btn-call">Call ${row.mobile || ''}</a></td>
                     <td>${row.fatherName || '-'}<br><small style="color:#718096;">${row.motherName || '-'}</small></td>
@@ -678,7 +688,7 @@
                         <button class="btn-save-note" onclick="saveNote('admission', ${row.rowNum})">Save</button>
                     </td>
                     <td>
-                        <a href="https://wa.me/91${String(row.mobile || '').replace(/\D/g, '')}" target="_blank" class="btn-call" style="background:#25D366;">WhatsApp</a>
+                        <a href="https://wa.me/91${String(row.mobile || '').replace(/\D/g, '')}?text=Hello%20${encodeURIComponent(row.studentName || '')}%20parent,%20this%20is%20Vasanth%20School.%20Thank%20you%20for%20your%20admission%20enquiry.%20We%20would%20like%20to%20discuss%20further.%20Please%20visit%20our%20school%20or%20call%20us." target="_blank" class="btn-call" style="background:#25D366;">WhatsApp</a>
                     </td>
                 `;
                 tbody.appendChild(tr);
